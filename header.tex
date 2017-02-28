@@ -1,0 +1,40 @@
+\usepackage{textpos}
+\usepackage{mathpazo}
+
+\definecolor{first}{HTML}{009D7F}
+\definecolor{first-text}{HTML}{F2F2F2}
+\definecolor{second}{HTML}{00997D}
+\definecolor{second-text}{HTML}{FDFDFD}
+\definecolor{third}{HTML}{008068}
+\definecolor{third-text}{HTML}{FFFFFF}
+\setbeamercolor*{palette primary}{use=structure,fg=first-text,bg=first}
+\setbeamercolor*{palette secondary}{use=structure,fg=second-text,bg=second}
+\setbeamercolor*{palette tertiary}{use=structure,fg=third-text,bg=third}
+\setbeamercolor{item projected}{fg=white,bg=third}
+
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{100mm}(0.92\textwidth,-0.85cm)
+\includegraphics[height=0.75cm]{LogoNMBUwhite}
+\end{textblock*}}
+
+\titlegraphic{\includegraphics[height=1cm]{LogoNMBU}}
+% \renewcommand*{\bibfont}{\scriptsize}
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\inserttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
