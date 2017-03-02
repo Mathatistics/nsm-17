@@ -117,12 +117,12 @@ A comparative study of different estimation methods using simulated data {data-b
 
 ## Overview {data-background=#f2f2f2 .header-slide}
 
-----
 
 Conclusion {data-background=#fff .header-slide}
 =============================================================================
 
 ## Testing {data-background=#f2f2f2 .header-slide}
+
 <p class="fragment grow">grow</p>
 <p class="fragment shrink">shrink</p>
 <p class="fragment fade-out">fade-out</p>
