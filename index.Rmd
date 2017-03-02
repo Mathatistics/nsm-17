@@ -1,16 +1,16 @@
 ---
 title: "PhD Midway Seminar"
 author: "Raju Rimal"
-date: "8 March 2017"
+date: "`r format(Sys.Date(), '%d %B, %Y')`"
 output:
   revealjs::revealjs_presentation:
     background_transition: fade
-    center: yes
+    center: no
     css: css/custom.css
     highlight: tango
     reveal_options:
-      previewLinks: yes
       pdfMaxPagesPerSlide: 1
+      previewLinks: yes
     reveal_plugins:
     - notes
     - zoom
@@ -117,42 +117,96 @@ A comparative study of different estimation methods using simulated data {data-b
 
 ## Overview {data-background=#f2f2f2 .header-slide}
 
+##### Four estimtion methods were considered {.fragment}
 
-Conclusion {data-background=#fff .header-slide}
+<br/>
+<div class = "fragment">
+
+<div id = "left">
+
+#### Ordinary Least Squares {.fragment .highlight-current-mediumgreen}
+- Although unbiased, suffer highly from multicollinearity
+- Widely used and can be used as reference for comparison
+
+
+#### Envelope {.fragment .highlight-current-blue}
+- Based on Maximum Likelihood but works better than OLS in $p$ approaches $n$
+- Our analysis is based on envelope of predictor or `xenvelope`
+
+</div>
+
+<div id = "right">
+
+#### Partial Least Squares {.fragment .highlight-current-purple} 
+- Well established and widely used method
+- Based on Latent Structure and free of multicollinearity problem
+
+
+#### Bayes PLS {.fragment .highlight-current-red}
+- Bayesian Estimation of regression coefficient
+- Promising performance was shown in previous studies [@helland2012near]
+
+</div>
+</div>
+
+## Simulation Design {data-background=#f2f2f2 .header-slide}
+From the possible combination of following parameter combination, *32* calibration sets were simulated with *5* replication of each.
+
+> - **Number of sample observations**: _50_
+> - **Number of predictor variables**: _15_ and _40_
+> - **Coefficient of determination**: _0.5_ and _0.9_
+> - **Decaying factor of eigenvalues of predictor variables**: _0.5_ and _0.9_
+> - **Position of relevant components**: _1_ and _2_; _1_ and _3_; _2_ and _3_; _1_, _2_ and _3_
+
+## A Systematic Comparison {data-background=#f2f2f2 .header-slide}
+<div class="fragment">
+
+```{r, out.width="60%"}
+knitr::include_graphics("images/effect-plot.png")
+```
+</div>
+
+<div class = "fragment">
+<div id = "left">
+- Bayes PLS has out-performed others methods in all kinds of data
+- Envelope has performed better than OLS in all situations and PLS in some situations
+</div>
+<div id = "right">
+- OLS prediction is very poor in noisy data with many predictor variables
+- Position of relvant component and the decaying factor of eigenvalue has less impact on prediction in all the models
+</div>
+</div>
+
+## A Systematic Comparison {data-background=#f2f2f2 .header-slide data-transition="none"}
+
+<div class="fragment">
+
+```{r, out.width="60%"}
+knitr::include_graphics("images/prediction-error-selected.png")
+```
+</div>
+
+<div class = "fragment">
+<div id = "left">
+- Bayes PLS has out-performed others methods in all kinds of data
+- Envelope has performed better than OLS in all situations and PLS in some situations
+</div>
+<div id = "right">
+- OLS prediction is very poor in noisy data with many predictor variables
+- Position of relvant component and the decaying factor of eigenvalue had less impact on prediction in all the models
+</div>
+</div>
+
+
+Demonstration {data-background=#fff .header-slide .center}
 =============================================================================
 
-## Testing {data-background=#f2f2f2 .header-slide}
+## { data-background-image='images/simulatr-screenshot.png' data-background-color=#f2f2f2 .header-slide}
+<h1><a href = "https://therimalaya.shinyapps.io/simulatr/" class = "big-text">
+`simulatr` APPLICATION
+</a></h1>
 
-<p class="fragment grow">grow</p>
-<p class="fragment shrink">shrink</p>
-<p class="fragment fade-out">fade-out</p>
-<p class="fragment fade-up">fade-up (also down, left and right!)</p>
-<p class="fragment current-visible">visible only once</p>
-<p class="fragment highlight-current-blue">blue only once</p>
-<p class="fragment highlight-red">highlight-red</p>
-<p class="fragment highlight-green">highlight-green</p>
-<p class="fragment highlight-blue">highlight-blue</p>
-
-## Simulatr App {data-background=#f2f2f2 .header-slide}
-<a href = "https://therimalaya.shinyapps.io/simulatr/">
-```{r, out.width='80%'}
-knitr::include_graphics("images/simulatr-screenshot.png")
-```
-</a>
-
----
-
-## A java Applet {data-background=#f2f2f2 .header-slide}
-
-<APPLET ARCHIVE="~/Desktop/cakefactory.jar" WIDTH=400 HEIGHT=200>
- </APPLET>
-
-----
-
-```{r, fig.align='center', out.width="90%"}
-knitr::include_graphics('images/ThankYou.jpg')
-```
-
+# {data-background-image='images/ThankYou.jpg' data-background-size='90% 90%' data-background-color=#fff}
 
 # References
 ## References {data-background=#f2f2f2 .header-slide}

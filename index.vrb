@@ -1,0 +1,50 @@
+\frametitle{Overview}
+
+\begin{block}{Four estimtion methods were considered}
+
+\hypertarget{left}{}
+\subsubsection{Ordinary Least Squares}\label{ordinary-least-squares}
+
+\begin{itemize}
+\tightlist
+\item
+  Although unbiased, suffer highly from multicollinearity
+\item
+  Widely used and can be used as reference for comparison
+\end{itemize}
+
+\subsubsection{Envelope}\label{envelope}
+
+\begin{itemize}
+\tightlist
+\item
+  Based on Maximum Likelihood but works better than OLS in \(p\)
+  approaches \(n\)
+\item
+  Our analysis is based on envelope of predictor or \texttt{xenvelope}
+\end{itemize}
+
+\hypertarget{right}{}
+\subsubsection{Partial Least Squares}\label{partial-least-squares}
+
+\begin{itemize}
+\tightlist
+\item
+  Well established and widely used method
+\item
+  Based on Latent Structure and free of multicollinearity problem
+\end{itemize}
+
+\subsubsection{Bayes PLS}\label{bayes-pls}
+
+\begin{itemize}
+\tightlist
+\item
+  Bayesian Estimation of regression coefficient
+\item
+  Promising performance was shown in previous studies
+  \citep{helland2012near}
+\end{itemize}
+
+\end{block}
+

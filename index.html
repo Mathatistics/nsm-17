@@ -87,7 +87,7 @@
     <h1 class="title">PhD Midway Seminar</h1>
   <h1 class="subtitle"><small>Simulation Tool and its application</small></h1>
     <h2 class="author">Raju Rimal</h2>
-    <h3 class="date">8 March 2017</h3>
+    <h3 class="date">03 March, 2017</h3>
 </section>
 
 <section><section id="introduction" class="titleslide slide level1 header-slide" data-background="#fff"><h1>Introduction</h1></section><section id="my-phd-plan" class="slide level2 header-slide" data-background="#f2f2f2">
@@ -150,50 +150,96 @@ Today I will talk about:
 </section></section>
 <section><section id="a-comparative-study-of-different-estimation-methods-using-simulated-data" class="titleslide slide level1 header-slide" data-background="#fff"><h1>A comparative study of different estimation methods using simulated data</h1></section><section id="overview-1" class="slide level2 header-slide" data-background="#f2f2f2">
 <h2>Overview</h2>
+<h5 id="four-estimtion-methods-were-considered" class="fragment">Four estimtion methods were considered</h5>
+<br/>
+<div class="fragment">
+<div id="left">
+<h4 id="ordinary-least-squares" class="fragment highlight-current-mediumgreen">Ordinary Least Squares</h4>
+<ul>
+<li>Although unbiased, suffer highly from multicollinearity</li>
+<li>Widely used and can be used as reference for comparison</li>
+</ul>
+<h4 id="envelope" class="fragment highlight-current-blue">Envelope</h4>
+<ul>
+<li>Based on Maximum Likelihood but works better than OLS in <span class="math inline">\(p\)</span> approaches <span class="math inline">\(n\)</span></li>
+<li>Our analysis is based on envelope of predictor or <code>xenvelope</code></li>
+</ul>
+</div>
+<div id="right">
+<h4 id="partial-least-squares" class="fragment highlight-current-purple">Partial Least Squares</h4>
+<ul>
+<li>Well established and widely used method</li>
+<li>Based on Latent Structure and free of multicollinearity problem</li>
+</ul>
+<h4 id="bayes-pls" class="fragment highlight-current-red">Bayes PLS</h4>
+<ul>
+<li>Bayesian Estimation of regression coefficient</li>
+<li>Promising performance was shown in previous studies <span class="citation" data-cites="helland2012near">(Helland, Saebø, Tjelmeland, &amp; others, 2012)</span></li>
+</ul>
+</div>
+</div>
+</section><section id="simulation-design" class="slide level2 header-slide" data-background="#f2f2f2">
+<h2>Simulation Design</h2>
+<p>From the possible combination of following parameter combination, <em>32</em> calibration sets were simulated with <em>5</em> replication of each.</p>
+<ul>
+<li class="fragment"><strong>Number of sample observations</strong>: <em>50</em></li>
+<li class="fragment"><strong>Number of predictor variables</strong>: <em>15</em> and <em>40</em></li>
+<li class="fragment"><strong>Coefficient of determination</strong>: <em>0.5</em> and <em>0.9</em></li>
+<li class="fragment"><strong>Decaying factor of eigenvalues of predictor variables</strong>: <em>0.5</em> and <em>0.9</em></li>
+<li class="fragment"><strong>Position of relevant components</strong>: <em>1</em> and <em>2</em>; <em>1</em> and <em>3</em>; <em>2</em> and <em>3</em>; <em>1</em>, <em>2</em> and <em>3</em></li>
+</ul>
+</section><section id="a-systematic-comparison" class="slide level2 header-slide" data-background="#f2f2f2">
+<h2>A Systematic Comparison</h2>
+<div class="fragment">
+<p><img src="images/effect-plot.png" width="60%" /></p>
+</div>
+<div class="fragment">
+<div id="left">
+<ul>
+<li>Bayes PLS has out-performed others methods in all kinds of data</li>
+<li>Envelope has performed better than OLS in all situations and PLS in some situations</li>
+</ul>
+</div>
+<div id="right">
+<ul>
+<li>OLS prediction is very poor in noisy data with many predictor variables</li>
+<li>Position of relvant component and the decaying factor of eigenvalue has less impact on prediction in all the models</li>
+</ul>
+</div>
+</div>
+</section><section id="a-systematic-comparison-1" class="slide level2 header-slide" data-background="#f2f2f2" data-transition="none">
+<h2>A Systematic Comparison</h2>
+<div class="fragment">
+<p><img src="images/prediction-error-selected.png" width="60%" /></p>
+</div>
+<div class="fragment">
+<div id="left">
+<ul>
+<li>Bayes PLS has out-performed others methods in all kinds of data</li>
+<li>Envelope has performed better than OLS in all situations and PLS in some situations</li>
+</ul>
+</div>
+<div id="right">
+<ul>
+<li>OLS prediction is very poor in noisy data with many predictor variables</li>
+<li>Position of relvant component and the decaying factor of eigenvalue had less impact on prediction in all the models</li>
+</ul>
+</div>
+</div>
 </section></section>
-<section><section id="conclusion" class="titleslide slide level1 header-slide" data-background="#fff"><h1>Conclusion</h1></section><section id="testing" class="slide level2 header-slide" data-background="#f2f2f2">
-<h2>Testing</h2>
-<p class="fragment grow">
-grow
-</p>
-<p class="fragment shrink">
-shrink
-</p>
-<p class="fragment fade-out">
-fade-out
-</p>
-<p class="fragment fade-up">
-fade-up (also down, left and right!)
-</p>
-<p class="fragment current-visible">
-visible only once
-</p>
-<p class="fragment highlight-current-blue">
-blue only once
-</p>
-<p class="fragment highlight-red">
-highlight-red
-</p>
-<p class="fragment highlight-green">
-highlight-green
-</p>
-<p class="fragment highlight-blue">
-highlight-blue
-</p>
-</section><section id="simulatr-app" class="slide level2 header-slide" data-background="#f2f2f2">
-<h2>Simulatr App</h2>
-<p><a href = "https://therimalaya.shinyapps.io/simulatr/"> <img src="images/simulatr-screenshot.png" width="80%" /> </a></p>
-</section><section id="a-java-applet" class="slide level2 header-slide" data-background="#f2f2f2">
-<h2>A java Applet</h2>
-<APPLET ARCHIVE="~/Desktop/cakefactory.jar" WIDTH="400" HEIGHT="200">
-</APPLET>
-</section><section class="slide level2">
-
-<p><img src="images/ThankYou.jpg" width="90%" style="display: block; margin: auto;" /></p>
+<section><section id="demonstration" class="titleslide slide level1 header-slide center" data-background="#fff"><h1>Demonstration</h1></section><section id="section" class="slide level2 header-slide" data-background-image="images/simulatr-screenshot.png" data-background-color="#f2f2f2">
+<h2></h2>
+<h1>
+<a href = "https://therimalaya.shinyapps.io/simulatr/" class = "big-text"> <code>simulatr</code> APPLICATION </a>
+</h1>
 </section></section>
+<section><section id="section-1" class="titleslide slide level1" data-background-image="images/ThankYou.jpg" data-background-size="90% 90%" data-background-color="#fff"><h1></h1></section></section>
 <section><section id="references" class="titleslide slide level1"><h1>References</h1></section><section id="references-1" class="slide level2 unnumbered header-slide" data-background="#f2f2f2">
 <h2>References</h2>
 <div id="refs" class="references">
+<div id="ref-helland2012near">
+<p>Helland, I. S., Saebø, S., Tjelmeland, H., &amp; others. (2012). Near optimal prediction from relevant components. <em>Scandinavian Journal of Statistics</em>, <em>39</em>(4), 695–713.</p>
+</div>
 <div id="ref-saebo2015simrel">
 <p>Sæbø, S., Almøy, T., &amp; Helland, I. S. (2015). Simrel—A versatile tool for linear model data simulation based on the concept of a relevant subspace and relevant predictors. <em>Chemometrics and Intelligent Laboratory Systems</em>, <em>146</em>, 128–135.</p>
 </div>
@@ -213,7 +259,7 @@ highlight-blue
         // Push each slide change to the browser history
         history: true,
         // Vertical centering of slides
-        center: true,
+        center: false,
         // Opens links in an iframe preview overlay
         previewLinks: true,
         // Transition style

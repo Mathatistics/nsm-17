@@ -19,21 +19,38 @@ body:after {
   float:left;
   width: 49%;
   text-align: left;
+  display: block;
 }
 
 #right {
   float: right;
   width: 49%;
-  text-align: right;
+  text-align: left;
+  display: block;
 }
 
 .reveal{
   font-family: Palatino, serif;
 }
 
-.reveal .slides section .fragment.highlight-bold{
+.reveal .slides section .fragment.highlight-mediumgreen,
+.reveal .slides section .fragment.highlight-purple,
+.reveal .slides section .fragment.highlight-bold,
+.reveal .slides section .fragment.highlight-current-mediumgreen,
+.reveal .slides section .fragment.highlight-current-purple,
+.reveal .slides section .fragment.highlight-current-bold {
   opacity: 1;
   visibility: visible;
+}
+
+.reveal .slides section .fragment.highlight-mediumgreen.visible,
+.reveal .slides section .fragment.highlight-current-mediumgreen.current-fragment{
+  color: #2E8B57;
+}
+
+.reveal .slides section .fragment.highlight-purple.visible,
+.reveal .slides section .fragment.highlight-current-purple.current-fragment{
+  color: #BA55D3;
 }
 
 .reveal .slides section .fragment.highlight-bold.visible{
@@ -48,8 +65,32 @@ body:after {
 .reveal .slides section .header-slide h1,
 .reveal .slides section .header-slide h2,
 .reveal .slides section .header-slide h3,
+.reveal .slides section .header-slide h4,
+.reveal .slides section .header-slide h5,
+.reveal .slides section .header-slide h6,
 .reveal .slides section .header-slide p,
 .reveal .slides section .header-slide span
 {
   color:#117d6b;
+}
+
+.reveal .slides section .fragment.hide-out {
+  opacity: 0;
+  visibility: hidden; 
+  display:none;
+}
+.reveal .slides section .fragment.hide-out.current-fragment {
+  opacity: 1;
+  visibility: visible;
+  display:initial;
+}
+a.big-text{
+  font-weight: 900;
+  color: #117d6b;
+  text-shadow:5px 5px 2px #bdbdbd;
+}
+a.big-text:hover{
+  font-weight: 900;
+  color: #4169E1;
+  text-shadow:5px 5px 2px #bdbdbd;
 }
