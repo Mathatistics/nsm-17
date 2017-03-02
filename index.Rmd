@@ -52,10 +52,10 @@ library(simrel)
 ```
 
 
-Introduction
+Introduction {data-background=#fff .header-slide}
 =============================================================================
 
-## My PhD Plan 
+## My PhD Plan {data-background=#f2f2f2 .header-slide}
 
 <div id = "left" class = "fragment">
 ```{r eval = ifnot.beamer}
@@ -70,23 +70,23 @@ knitr::include_graphics("images/phd-plan.svg")
 > - Apply this extended tool to <span class="fragment highlight-blue">test multi-matrix extension of PLS</span> models such as LPLS and UPLS
 </div>
 
-## What I learn
+## What I learn {data-background=#f2f2f2 .header-slide}
 > - Advanced Multivariate Model and technique to analyze it
 > - Programming concept for developing statistical packages and applications for various statistical methods
 > - Extending and improving existing methods in statistics
-> - Properly document what I have done
+> - And, Obviously, to properly document what I have done
 
-## Today's Special
+## Today's Special {data-background=#f2f2f2 .header-slide}
 
-Today I will talk about:
+<div class="fragment">Today I will talk about:</div><br/>
 
-> - Simulation tool we are building
-> - A competative study of different estimation technique by using the data simulated from the tool
+> - Simulation tool (<span class="fragment highlight-blue">`simulatr`</span>) we are building
+> - A <span class="fragment highlight-blue">competative study</span> of various estimation techniques by simulating linear model data using `simulatr`
 
-`simrel-m`: A versatile tool for simulating multi-response linear model data
+`simrel-m`: A versatile tool for simulating multi-response linear model data {data-background=#fff .header-slide}
 =============================================================================
 
-## Overview
+## Overview {data-background=#f2f2f2 .header-slide}
 > - An extension of `simrel` [@saebo2015simrel] r-package
 > - Uses the idea of reduction of random regression model by separating latent space of $\mathbf{X}$ into subspaces that is relevant and irrelevant for predicting each response
 > - The underlying concept is based on reparameterizing the population model, 
@@ -95,27 +95,34 @@ $$
 $$
 where, $\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})$
 
-## Underlying procedure
-<div id = "left">
+## Underlying procedure {data-background=#f2f2f2 .header-slide}
+<div id = "left" class = "fragment">
 ```{r, eval = ifnot.beamer}
 knitr::include_graphics("images/simrel-broad-flowchart.svg")
+htmltools::br()
+htmltools::div(
+  htmltools::a(href = "simrel-flowchart", "A more extensive flowchart")
+)
 ```
 </div>
-<div id = "right>
-
+<div id = "right">
+> - Collect population input parameter from users such as: number of variables, coefficient of determination and the position of relevant components
+> - Make a covariance matrix satisfying input parameters
+> - Rotate the covariance matrix orthogonally
+> - Sample calibration and validation sets
 </div>
 
-A comparative study of different estimation methods using simulated data
+A comparative study of different estimation methods using simulated data {data-background=#fff .header-slide}
 =============================================================================
 
-## Overview
+## Overview {data-background=#f2f2f2 .header-slide}
 
 ----
 
-Conclusion
+Conclusion {data-background=#fff .header-slide}
 =============================================================================
 
-## Testing
+## Testing {data-background=#f2f2f2 .header-slide}
 <p class="fragment grow">grow</p>
 <p class="fragment shrink">shrink</p>
 <p class="fragment fade-out">fade-out</p>
@@ -126,7 +133,7 @@ Conclusion
 <p class="fragment highlight-green">highlight-green</p>
 <p class="fragment highlight-blue">highlight-blue</p>
 
-## Simulatr App
+## Simulatr App {data-background=#f2f2f2 .header-slide}
 <a href = "https://therimalaya.shinyapps.io/simulatr/">
 ```{r, out.width='80%'}
 knitr::include_graphics("images/simulatr-screenshot.png")
@@ -135,7 +142,7 @@ knitr::include_graphics("images/simulatr-screenshot.png")
 
 ---
 
-## A java Applet
+## A java Applet {data-background=#f2f2f2 .header-slide}
 
 <APPLET ARCHIVE="~/Desktop/cakefactory.jar" WIDTH=400 HEIGHT=200>
  </APPLET>
@@ -148,4 +155,4 @@ knitr::include_graphics('images/ThankYou.jpg')
 
 
 # References
-## References
+## References {data-background=#f2f2f2 .header-slide}

@@ -44,3 +44,12 @@ body:after {
   border:none; 
   box-shadow:none; 
 }
+.reveal .slides section .header-slide,
+.reveal .slides section .header-slide h1,
+.reveal .slides section .header-slide h2,
+.reveal .slides section .header-slide h3,
+.reveal .slides section .header-slide p,
+.reveal .slides section .header-slide span
+{
+  color:#117d6b;
+}
