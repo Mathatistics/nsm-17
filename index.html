@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Raju Rimal" />
+  <title>PhD Midway Seminar</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0/css/theme/night.css" id="theme">
+
+<style type="text/css">
+.reveal section img {
+  background: rgba(255, 255, 255, 0.85);
+}
+</style>
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="css/custom.css"/>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'index_files/reveal.js-3.3.0/css/print/pdf.css' : 'index_files/reveal.js-3.3.0/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <!--[if lt IE 9]>
+    <script src="index_files/reveal.js-3.3.0/lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link href="index_files/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">PhD Midway Seminar</h1>
+  <h1 class="subtitle"><small>Simulation Tool and its application</small></h1>
+    <h2 class="author">Raju Rimal</h2>
+    <h3 class="date">8 March 2017</h3>
+</section>
+
+<section><section id="introduction" class="titleslide slide level1"><h1>Introduction</h1></section><section id="my-phd-plan" class="slide level2">
+<h2>My PhD Plan</h2>
+<div id="left" class="fragment">
+<p><img src="images/phd-plan.svg" /></p>
+</div>
+<br>
+<div id="right">
+<ul>
+<li class="fragment">Make <span class="fragment highlight-blue">Simulation Tools</span> for multi-response linear model data</li>
+<li class="fragment">Using the tool, compare various <span class="fragment highlight-bold">estimation techniques</span> and <span class="fragment highlight-bold">understand</span> them</li>
+<li class="fragment"><span class="fragment highlight-bold">Extend</span> the simulation tool incorporating model with <span class="fragment highlight-bold">background information</span></li>
+<li class="fragment">Apply this extended tool to <span class="fragment highlight-blue">test multi-matrix extension of PLS</span> models such as LPLS and UPLS</li>
+</ul>
+</div>
+</section><section id="what-i-learn" class="slide level2">
+<h2>What I learn</h2>
+<ul>
+<li class="fragment">Advanced Multivariate Model and technique to analyze it</li>
+<li class="fragment">Programming concept of statistical methods to create packages and application that is useful for research and education</li>
+<li class="fragment">Extending and improving existing methods in statistics</li>
+<li class="fragment">Properly document what I have done</li>
+</ul>
+</section><section id="todays-special" class="slide level2">
+<h2>Today’s Special</h2>
+<p>Today I will talk about:</p>
+<ul>
+<li class="fragment">Simulation tool we are building</li>
+<li class="fragment">A competative study of different estimation technique by using the data simulated from the tool</li>
+</ul>
+</section></section>
+<section><section id="simrel-m-a-versatile-tool-for-simulating-multi-response-linear-model-data" class="titleslide slide level1"><h1><code>simrel-m</code>: A versatile tool for simulating multi-response linear model data</h1></section><section id="overview" class="slide level2">
+<h2>Overview</h2>
+<ul>
+<li class="fragment">An extension of <code>simrel</code> <span class="citation" data-cites="saebo2015simrel">(Sæbø, Almøy, &amp; Helland, 2015)</span> r-package</li>
+<li class="fragment">Uses the idea of reduction of random regression model by separating latent space of <span class="math inline">\(\mathbf{X}\)</span> into subspaces that is relevant and irrelevant for predicting each response</li>
+<li class="fragment">The underlying concept is based on reparameterizing the population model, <span class="math display">\[
+\mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
+\]</span> where, <span class="math inline">\(\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})\)</span></li>
+</ul>
+</section><section id="underlying-procedure" class="slide level2">
+<h2>Underlying procedure</h2>
+<div id="left">
+<p><img src="images/simrel-broad-flowchart.svg" /></p>
+</div>
+<div id="right&gt;
+
+&lt;/div&gt;
+
+A comparative study of different estimation methods using simulated data
+=============================================================================
+
+## Overview
+
+----
+
+Conclusion
+=============================================================================
+
+## Testing
+&lt;p class=" fragment="" grow"="">
+
+</div>
+</section></section>
+<section><section id="a-comparative-study-of-different-estimation-methods-using-simulated-data" class="titleslide slide level1"><h1>A comparative study of different estimation methods using simulated data</h1></section><section id="overview-1" class="slide level2">
+<h2>Overview</h2>
+</section><section class="slide level2">
+
+</section></section>
+<section><section id="conclusion" class="titleslide slide level1"><h1>Conclusion</h1></section><section id="testing" class="slide level2">
+<h2>Testing</h2>
+<p class="fragment grow">
+grow
+</p>
+<p class="fragment shrink">
+shrink
+</p>
+<p class="fragment fade-out">
+fade-out
+</p>
+<p class="fragment fade-up">
+fade-up (also down, left and right!)
+</p>
+<p class="fragment current-visible">
+visible only once
+</p>
+<p class="fragment highlight-current-blue">
+blue only once
+</p>
+<p class="fragment highlight-red">
+highlight-red
+</p>
+<p class="fragment highlight-green">
+highlight-green
+</p>
+<p class="fragment highlight-blue">
+highlight-blue
+</p>
+</section><section id="simulatr-app" class="slide level2">
+<h2>Simulatr App</h2>
+<p><a href = "https://therimalaya.shinyapps.io/simulatr/"> <img src="images/simulatr-screenshot.png" width="80%" /> </a></p>
+</section><section id="a-java-applet" class="slide level2">
+<h2>A java Applet</h2>
+<APPLET ARCHIVE="~/Desktop/cakefactory.jar" WIDTH="400" HEIGHT="200">
+</APPLET>
+</section><section class="slide level2">
+
+<p><img src="images/ThankYou.jpg" width="90%" style="display: block; margin: auto;" /></p>
+</section></section>
+<section><section id="references" class="titleslide slide level1"><h1>References</h1></section><section id="references-1" class="slide level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-saebo2015simrel">
+<p>Sæbø, S., Almøy, T., &amp; Helland, I. S. (2015). Simrel—A versatile tool for linear model data simulation based on the concept of a relevant subspace and relevant predictors. <em>Chemometrics and Intelligent Laboratory Systems</em>, <em>146</em>, 128–135.</p>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+
+        chalkboard: {
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'index_files/reveal.js-3.3.0/plugin/notes/notes.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0/plugin/zoom-js/zoom.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>

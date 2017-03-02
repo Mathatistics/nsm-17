@@ -1,0 +1,26 @@
+---
+title: "Open Java Applet in Mac"
+output: 
+  html_document: 
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Step 1
+
+![](Img-1.png)
+
+## Step 2
+
+![](Img-2.png)
+
+## Step 3
+
+![](Img-3.png)
+
+## Step 3
+
+![](Img-4.png)

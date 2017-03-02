@@ -1,0 +1,46 @@
+body {
+  background-color: #117d6b;
+}
+
+body:after {
+  background-image: url(../images/logo-nmbu-white-square.png);
+  background-size: 100px 80px;
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 110px;
+  height: 100px;
+  z-index: 30;
+  right: 120px;
+  bottom: 8px;
+  content:"";
+}
+
+#left {
+  float:left;
+  width: 49%;
+  text-align: left;
+}
+
+#right {
+  float: right;
+  width: 49%;
+  text-align: right;
+}
+
+.reveal{
+  font-family: Palatino, serif;
+}
+
+.reveal .slides section .fragment.highlight-bold{
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.highlight-bold.visible{
+  font-weight:bold;
+}
+.reveal section img { 
+  background:none; 
+  border:none; 
+  box-shadow:none; 
+}
