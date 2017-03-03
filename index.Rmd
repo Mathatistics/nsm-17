@@ -95,22 +95,29 @@ $$
 $$
 where, $\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})$
 
+
 ## Underlying procedure {data-background=#f2f2f2 .header-slide}
+
 <div id = "left" class = "fragment">
+
 ```{r, eval = ifnot.beamer}
 knitr::include_graphics("images/simrel-broad-flowchart.svg")
-htmltools::br()
-htmltools::div(
-  htmltools::a(href = "simrel-flowchart", "A more extensive flowchart")
-)
 ```
+
 </div>
+
 <div id = "right">
+
 > - Collect population input parameter from users such as: number of variables, coefficient of determination and the position of relevant components
 > - Make a covariance matrix satisfying input parameters
 > - Rotate the covariance matrix orthogonally
 > - Sample calibration and validation sets
+
 </div>
+
+<br/>
+
+<center><a href = "simrel-flowchart/index.html" class = "fragment">Extensive Flowchart</a></center>
 
 A comparative study of different estimation methods using simulated data {data-background=#fff .header-slide}
 =============================================================================
@@ -184,6 +191,7 @@ knitr::include_graphics("images/effect-plot.png")
 ```{r, out.width="60%"}
 knitr::include_graphics("images/prediction-error-selected.png")
 ```
+
 </div>
 
 <div class = "fragment">
