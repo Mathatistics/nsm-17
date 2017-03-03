@@ -55,7 +55,7 @@ library(simrel)
 Introduction {data-background=#fff .header-slide}
 =============================================================================
 
-## My PhD Plan {data-background=#f2f2f2 .header-slide}
+## My PhD Plan {data-background=#e2e2e2 .header-slide}
 
 <div id = "left" class = "fragment">
 ```{r eval = ifnot.beamer}
@@ -70,23 +70,23 @@ knitr::include_graphics("images/phd-plan.svg")
 > - Apply this extended tool to <span class="fragment highlight-blue">test multi-matrix extension of PLS</span> models such as LPLS and UPLS
 </div>
 
-## What I learn {data-background=#f2f2f2 .header-slide}
+## What I learn {data-background=#e2e2e2 .header-slide}
 > - Advanced Multivariate Model and technique to analyze it
 > - Programming concept for developing statistical packages and applications for various statistical methods
 > - Extending and improving existing methods in statistics
 > - And, Obviously, to properly document what I have done
 
-## Today's Special {data-background=#f2f2f2 .header-slide}
+## Today's Special {data-background=#e2e2e2 .header-slide}
 
 <div class="fragment">Today I will talk about:</div><br/>
 
 > - Simulation tool (<span class="fragment highlight-blue">`simulatr`</span>) we are building
-> - A <span class="fragment highlight-blue">competative study</span> of various estimation techniques by simulating linear model data using `simulatr`
+> - A <span class="fragment highlight-blue">comparative study</span> of various estimation techniques by simulating linear model data using `simulatr`
 
 `simrel-m`: A versatile tool for simulating multi-response linear model data {data-background=#fff .header-slide}
 =============================================================================
 
-## Overview {data-background=#f2f2f2 .header-slide}
+## Overview {data-background=#e2e2e2 .header-slide}
 > - An extension of `simrel` [@saebo2015simrel] r-package
 > - Uses the idea of reduction of random regression model by separating latent space of $\mathbf{X}$ into subspaces that is relevant and irrelevant for predicting each response
 > - The underlying concept is based on reparameterizing the population model, 
@@ -96,7 +96,7 @@ $$
 where, $\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})$
 
 
-## Underlying procedure {data-background=#f2f2f2 .header-slide}
+## Underlying procedure {data-background=#e2e2e2 .header-slide}
 
 <div id = "left" class = "fragment">
 
@@ -115,14 +115,10 @@ knitr::include_graphics("images/simrel-broad-flowchart.svg")
 
 </div>
 
-<br/>
-
-<center><a href = "simrel-flowchart/index.html" class = "fragment">Extensive Flowchart</a></center>
-
 A comparative study of different estimation methods using simulated data {data-background=#fff .header-slide}
 =============================================================================
 
-## Overview {data-background=#f2f2f2 .header-slide}
+## Overview {data-background=#e2e2e2 .header-slide}
 
 ##### Four estimtion methods were considered {.fragment}
 
@@ -156,7 +152,7 @@ A comparative study of different estimation methods using simulated data {data-b
 </div>
 </div>
 
-## Simulation Design {data-background=#f2f2f2 .header-slide}
+## Simulation Design {data-background=#e2e2e2 .header-slide}
 From the possible combination of following parameter combination, *32* calibration sets were simulated with *5* replication of each.
 
 > - **Number of sample observations**: _50_
@@ -165,7 +161,7 @@ From the possible combination of following parameter combination, *32* calibrati
 > - **Decaying factor of eigenvalues of predictor variables**: _0.5_ and _0.9_
 > - **Position of relevant components**: _1_ and _2_; _1_ and _3_; _2_ and _3_; _1_, _2_ and _3_
 
-## A Systematic Comparison {data-background=#f2f2f2 .header-slide}
+## A Systematic Comparison {data-background=#e2e2e2 .header-slide}
 <div class="fragment">
 
 ```{r, out.width="60%"}
@@ -184,7 +180,7 @@ knitr::include_graphics("images/effect-plot.png")
 </div>
 </div>
 
-## A Systematic Comparison {data-background=#f2f2f2 .header-slide data-transition="none"}
+## A Systematic Comparison {data-background=#e2e2e2 .header-slide data-transition="none"}
 
 <div class="fragment">
 
@@ -196,12 +192,12 @@ knitr::include_graphics("images/prediction-error-selected.png")
 
 <div class = "fragment">
 <div id = "left">
-- Bayes PLS has out-performed others methods in all kinds of data
-- Envelope has performed better than OLS in all situations and PLS in some situations
+- Bayes PLS has approached to its minimum error with very few component and remained low for additional component
+- PLS has moderate performance but better than envelope in many situations.
 </div>
 <div id = "right">
-- OLS prediction is very poor in noisy data with many predictor variables
-- Position of relvant component and the decaying factor of eigenvalue had less impact on prediction in all the models
+- OLS prediction is poor especially with large number of predictor
+- Envelope method captured its minimum error and the error increased with additional components
 </div>
 </div>
 
@@ -209,7 +205,7 @@ knitr::include_graphics("images/prediction-error-selected.png")
 Demonstration {data-background=#fff .header-slide .center}
 =============================================================================
 
-## { data-background-image='images/simulatr-screenshot.png' data-background-color=#f2f2f2 .header-slide}
+## { data-background-image='images/simulatr-screenshot.png' data-background-color=#e2e2e2 .header-slide}
 <h1><a href = "https://therimalaya.shinyapps.io/simulatr/" class = "big-text">
 `simulatr` APPLICATION
 </a></h1>
@@ -217,4 +213,4 @@ Demonstration {data-background=#fff .header-slide .center}
 # {data-background-image='images/ThankYou.jpg' data-background-size='90% 90%' data-background-color=#fff}
 
 # References
-## References {data-background=#f2f2f2 .header-slide}
+## References {data-background=#e2e2e2 .header-slide}

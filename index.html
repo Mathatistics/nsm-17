@@ -90,7 +90,7 @@
     <h3 class="date">03 March, 2017</h3>
 </section>
 
-<section><section id="introduction" class="titleslide slide level1 header-slide" data-background="#fff"><h1>Introduction</h1></section><section id="my-phd-plan" class="slide level2 header-slide" data-background="#f2f2f2">
+<section><section id="introduction" class="titleslide slide level1 header-slide" data-background="#fff"><h1>Introduction</h1></section><section id="my-phd-plan" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>My PhD Plan</h2>
 <div id="left" class="fragment">
 <p><img src="images/phd-plan.svg" /></p>
@@ -104,7 +104,7 @@
 <li class="fragment">Apply this extended tool to <span class="fragment highlight-blue">test multi-matrix extension of PLS</span> models such as LPLS and UPLS</li>
 </ul>
 </div>
-</section><section id="what-i-learn" class="slide level2 header-slide" data-background="#f2f2f2">
+</section><section id="what-i-learn" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>What I learn</h2>
 <ul>
 <li class="fragment">Advanced Multivariate Model and technique to analyze it</li>
@@ -112,7 +112,7 @@
 <li class="fragment">Extending and improving existing methods in statistics</li>
 <li class="fragment">And, Obviously, to properly document what I have done</li>
 </ul>
-</section><section id="todays-special" class="slide level2 header-slide" data-background="#f2f2f2">
+</section><section id="todays-special" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>Today’s Special</h2>
 <div class="fragment">
 Today I will talk about:
@@ -120,10 +120,10 @@ Today I will talk about:
 <p><br/></p>
 <ul>
 <li class="fragment">Simulation tool (<span class="fragment highlight-blue"><code>simulatr</code></span>) we are building</li>
-<li class="fragment">A <span class="fragment highlight-blue">competative study</span> of various estimation techniques by simulating linear model data using <code>simulatr</code></li>
+<li class="fragment">A <span class="fragment highlight-blue">comparative study</span> of various estimation techniques by simulating linear model data using <code>simulatr</code></li>
 </ul>
 </section></section>
-<section><section id="simrel-m-a-versatile-tool-for-simulating-multi-response-linear-model-data" class="titleslide slide level1 header-slide" data-background="#fff"><h1><code>simrel-m</code>: A versatile tool for simulating multi-response linear model data</h1></section><section id="overview" class="slide level2 header-slide" data-background="#f2f2f2">
+<section><section id="simrel-m-a-versatile-tool-for-simulating-multi-response-linear-model-data" class="titleslide slide level1 header-slide" data-background="#fff"><h1><code>simrel-m</code>: A versatile tool for simulating multi-response linear model data</h1></section><section id="overview" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>Overview</h2>
 <ul>
 <li class="fragment">An extension of <code>simrel</code> <span class="citation" data-cites="saebo2015simrel">(Sæbø, Almøy, &amp; Helland, 2015)</span> r-package</li>
@@ -132,7 +132,7 @@ Today I will talk about:
 \mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
 \]</span> where, <span class="math inline">\(\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})\)</span></li>
 </ul>
-</section><section id="underlying-procedure" class="slide level2 header-slide" data-background="#f2f2f2">
+</section><section id="underlying-procedure" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>Underlying procedure</h2>
 <div id="left" class="fragment">
 <p><img src="images/simrel-broad-flowchart.svg" /></p>
@@ -145,12 +145,8 @@ Today I will talk about:
 <li class="fragment">Sample calibration and validation sets</li>
 </ul>
 </div>
-<p><br/></p>
-<center>
-<a href = "simrel-flowchart/index.html" class = "fragment">Extensive Flowchart</a>
-</center>
 </section></section>
-<section><section id="a-comparative-study-of-different-estimation-methods-using-simulated-data" class="titleslide slide level1 header-slide" data-background="#fff"><h1>A comparative study of different estimation methods using simulated data</h1></section><section id="overview-1" class="slide level2 header-slide" data-background="#f2f2f2">
+<section><section id="a-comparative-study-of-different-estimation-methods-using-simulated-data" class="titleslide slide level1 header-slide" data-background="#fff"><h1>A comparative study of different estimation methods using simulated data</h1></section><section id="overview-1" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>Overview</h2>
 <h5 id="four-estimtion-methods-were-considered" class="fragment">Four estimtion methods were considered</h5>
 <br/>
@@ -180,7 +176,7 @@ Today I will talk about:
 </ul>
 </div>
 </div>
-</section><section id="simulation-design" class="slide level2 header-slide" data-background="#f2f2f2">
+</section><section id="simulation-design" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>Simulation Design</h2>
 <p>From the possible combination of following parameter combination, <em>32</em> calibration sets were simulated with <em>5</em> replication of each.</p>
 <ul>
@@ -190,7 +186,7 @@ Today I will talk about:
 <li class="fragment"><strong>Decaying factor of eigenvalues of predictor variables</strong>: <em>0.5</em> and <em>0.9</em></li>
 <li class="fragment"><strong>Position of relevant components</strong>: <em>1</em> and <em>2</em>; <em>1</em> and <em>3</em>; <em>2</em> and <em>3</em>; <em>1</em>, <em>2</em> and <em>3</em></li>
 </ul>
-</section><section id="a-systematic-comparison" class="slide level2 header-slide" data-background="#f2f2f2">
+</section><section id="a-systematic-comparison" class="slide level2 header-slide" data-background="#e2e2e2">
 <h2>A Systematic Comparison</h2>
 <div class="fragment">
 <p><img src="images/effect-plot.png" width="60%" /></p>
@@ -209,7 +205,7 @@ Today I will talk about:
 </ul>
 </div>
 </div>
-</section><section id="a-systematic-comparison-1" class="slide level2 header-slide" data-background="#f2f2f2" data-transition="none">
+</section><section id="a-systematic-comparison-1" class="slide level2 header-slide" data-background="#e2e2e2" data-transition="none">
 <h2>A Systematic Comparison</h2>
 <div class="fragment">
 <p><img src="images/prediction-error-selected.png" width="60%" /></p>
@@ -217,26 +213,26 @@ Today I will talk about:
 <div class="fragment">
 <div id="left">
 <ul>
-<li>Bayes PLS has out-performed others methods in all kinds of data</li>
-<li>Envelope has performed better than OLS in all situations and PLS in some situations</li>
+<li>Bayes PLS has approached to its minimum error with very few component and remained low for additional component</li>
+<li>PLS has moderate performance but better than envelope in many situations.</li>
 </ul>
 </div>
 <div id="right">
 <ul>
-<li>OLS prediction is very poor in noisy data with many predictor variables</li>
-<li>Position of relvant component and the decaying factor of eigenvalue had less impact on prediction in all the models</li>
+<li>OLS prediction is poor especially with large number of predictor</li>
+<li>Envelope method captured its minimum error and the error increased with additional components</li>
 </ul>
 </div>
 </div>
 </section></section>
-<section><section id="demonstration" class="titleslide slide level1 header-slide center" data-background="#fff"><h1>Demonstration</h1></section><section id="section" class="slide level2 header-slide" data-background-image="images/simulatr-screenshot.png" data-background-color="#f2f2f2">
+<section><section id="demonstration" class="titleslide slide level1 header-slide center" data-background="#fff"><h1>Demonstration</h1></section><section id="section" class="slide level2 header-slide" data-background-image="images/simulatr-screenshot.png" data-background-color="#e2e2e2">
 <h2></h2>
 <h1>
 <a href = "https://therimalaya.shinyapps.io/simulatr/" class = "big-text"> <code>simulatr</code> APPLICATION </a>
 </h1>
 </section></section>
 <section><section id="section-1" class="titleslide slide level1" data-background-image="images/ThankYou.jpg" data-background-size="90% 90%" data-background-color="#fff"><h1></h1></section></section>
-<section><section id="references" class="titleslide slide level1"><h1>References</h1></section><section id="references-1" class="slide level2 unnumbered header-slide" data-background="#f2f2f2">
+<section><section id="references" class="titleslide slide level1"><h1>References</h1></section><section id="references-1" class="slide level2 unnumbered header-slide" data-background="#e2e2e2">
 <h2>References</h2>
 <div id="refs" class="references">
 <div id="ref-helland2012near">
