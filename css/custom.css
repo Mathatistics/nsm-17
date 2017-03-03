@@ -17,20 +17,17 @@ body:after {
 
 #left {
   float:left;
-  width: 49%;
-  text-align: left;
-  display: block;
+  width: 50%;
 }
 
 #right {
   float: right;
-  width: 49%;
-  text-align: left;
-  display: block;
+  width: 50%;
 }
 
 .reveal{
   font-family: Palatino, serif;
+  font-size-adjust: 0.8;
 }
 
 .reveal .slides section .fragment.highlight-mediumgreen,
@@ -84,13 +81,15 @@ body:after {
   visibility: visible;
   display:initial;
 }
-a.big-text{
-  font-weight: 900;
-  color: #117d6b;
-  text-shadow:5px 5px 2px #bdbdbd;
+.top{
+  top: 0!important;
 }
-a.big-text:hover{
-  font-weight: 900;
-  color: #4169E1;
-  text-shadow:5px 5px 2px #bdbdbd;
+.header-slide span.citation {
+  color: #21a3ce!important;
+}
+#simulatr-link a,
+#simulatr-link a:hover,
+#simulatr-link a:visited,
+#simulatr-link a:active{
+  color: #117d6b;
 }
