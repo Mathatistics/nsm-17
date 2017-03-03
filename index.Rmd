@@ -11,6 +11,7 @@ output:
     reveal_options:
       pdfMaxPagesPerSlide: 1
       previewLinks: yes
+      fragments: true
     reveal_plugins:
     - notes
     - zoom
