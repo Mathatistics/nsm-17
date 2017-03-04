@@ -8,17 +8,17 @@
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\ifxetex
+\usepackage{mathspec}
+\else
+\usepackage{fontspec}
 \fi
-\usetheme[]{Madrid}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+\usetheme{Madrid}
 \usecolortheme{seahorse}
 \usefonttheme{serif}
 % use upquote if available, for straight quotes in verbatim environments
@@ -31,46 +31,35 @@
 \newif\ifbibliography
 \usepackage{natbib}
 \bibliographystyle{plainnat}
-\hypersetup{
-            pdftitle={PhD Midway Seminar},
-            pdfauthor={Raju Rimal},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\usepackage{longtable,booktabs}
-\usepackage{caption}
-% These lines are needed to make table captions work with longtable:
-\makeatletter
-\def\fnum@table{\tablename~\thetable}
-\makeatother
 
 % Prevent slide breaks in the middle of a paragraph:
 \widowpenalties 1 10000
 \raggedbottom
 
 \AtBeginPart{
-  \let\insertpartnumber\relax
-  \let\partname\relax
-  \frame{\partpage}
+\let\insertpartnumber\relax
+\let\partname\relax
+\frame{\partpage}
 }
 \AtBeginSection{
-  \ifbibliography
-  \else
-    \let\insertsectionnumber\relax
-    \let\sectionname\relax
-    \frame{\sectionpage}
-  \fi
+\ifbibliography
+\else
+\let\insertsectionnumber\relax
+\let\sectionname\relax
+\frame{\sectionpage}
+\fi
 }
 \AtBeginSubsection{
-  \let\insertsubsectionnumber\relax
-  \let\subsectionname\relax
-  \frame{\subsectionpage}
+\let\insertsubsectionnumber\relax
+\let\subsectionname\relax
+\frame{\subsectionpage}
 }
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
 \usepackage{textpos}
 \usepackage{mathpazo}
@@ -118,7 +107,7 @@
 \author{Raju Rimal}
 \institute{\textbf{Supervisors}\\
 Solve Sæbø, Tryge Almøy}
-\date{02 March, 2017}
+\date{04 March, 2017}
 
 \begin{document}
 \frame{\titlepage}
@@ -141,9 +130,14 @@ Solve Sæbø, Tryge Almøy}
   {Extend} the simulation tool incorporating model with {background
   information}
 \item
-  Apply this extended tool to {test multi-matrix extension of PLS}
-  models such as LPLS and UPLS
+  Apply this extended tool to {test multi-matrix extension of partial
+  least square (PLS)} models such as LPLS and UPLS (both uses background
+  information about \(X\) and \(Y\) for analysis)
 \end{itemize}
+
+\begin{block}{Comment on PLS in short}
+
+\end{block}
 
 \end{frame}
 
@@ -159,7 +153,7 @@ Solve Sæbø, Tryge Almøy}
 \item
   Extending and improving existing methods in statistics
 \item
-  And, Obviously, to properly document what I have done
+  And, obviously, to properly document what I have done
 \end{itemize}
 
 \end{frame}
@@ -173,7 +167,7 @@ Today I will talk about:
 \item
   Simulation tool ({\texttt{simulatr}}) we are building
 \item
-  A {competative study} of various estimation techniques by simulating
+  A {comparative study} of various estimation techniques by simulating
   linear model data using \texttt{simulatr}
 \end{itemize}
 
@@ -185,25 +179,32 @@ data}{simrel-m: A versatile tool for simulating multi-response linear model data
 
 \begin{frame}[fragile]{Overview}
 
-\begin{itemize}[<+->]
+\pause
+
+\texttt{simrel-M} is an extension of \texttt{simrel}
+\citep{saebo2015simrel} r-package for simulating multi-response data
+
+\begin{itemize}
 \tightlist
-\item
-  An extension of \texttt{simrel} \citep{saebo2015simrel} r-package
 \item
   Uses the idea of reduction of random regression model by separating
   latent space of \(\mathbf{X}\) into subspaces that is relevant and
   irrelevant for predicting each response
 \item
   The underlying concept is based on reparameterizing the population
-  model, \[
-  \mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
-  \] where,
-  \(\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})\)
+  model,
 \end{itemize}
+
+\[
+\mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
+\text{, where }\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})
+\]
 
 \end{frame}
 
 \begin{frame}{Underlying procedure}
+
+\pause
 
 \hypertarget{left}{}
 
@@ -228,12 +229,13 @@ data}{simrel-m: A versatile tool for simulating multi-response linear model data
 simulated
 data}\label{a-comparative-study-of-different-estimation-methods-using-simulated-data}
 
-\begin{frame}[fragile]{Overview}
+\begin{frame}{Overview}
 
 \begin{block}{Four estimtion methods were considered}
 
 \hypertarget{left}{}
-\subsubsection{Ordinary Least Squares}\label{ordinary-least-squares}
+\paragraph{Ordinary Least Squares
+(OLS)}\label{ordinary-least-squares-ols}
 
 \begin{itemize}
 \tightlist
@@ -243,19 +245,20 @@ data}\label{a-comparative-study-of-different-estimation-methods-using-simulated-
   Widely used and can be used as reference for comparison
 \end{itemize}
 
-\subsubsection{Envelope}\label{envelope}
+\paragraph{Envelope}\label{envelope}
 
 \begin{itemize}
 \tightlist
 \item
+  Relatively new method \citep{cook2013envelopes} and is also based on
+  reduction of regression model
+\item
   Based on Maximum Likelihood but works better than OLS in \(p\)
   approaches \(n\)
-\item
-  Our analysis is based on envelope of predictor or \texttt{xenvelope}
 \end{itemize}
 
 \hypertarget{right}{}
-\subsubsection{Partial Least Squares}\label{partial-least-squares}
+\paragraph{Partial Least Squares (PLS)}\label{partial-least-squares-pls}
 
 \begin{itemize}
 \tightlist
@@ -265,7 +268,7 @@ data}\label{a-comparative-study-of-different-estimation-methods-using-simulated-
   Based on Latent Structure and free of multicollinearity problem
 \end{itemize}
 
-\subsubsection{Bayes PLS}\label{bayes-pls}
+\paragraph{Bayes PLS}\label{bayes-pls}
 
 \begin{itemize}
 \tightlist
@@ -282,53 +285,108 @@ data}\label{a-comparative-study-of-different-estimation-methods-using-simulated-
 
 \begin{frame}{Simulation Design}
 
-From the possible combination of following parameter combination, 32
-calibration sets were simulated with 5 replication of each.
+\pause
 
-\begin{longtable}[]{@{}rrrrr@{}}
-\toprule
-Number of sample observation & 50 & 50 & 50 & 50\tabularnewline
-Number of predictor variables & 15 & 40 & 15 & 40\tabularnewline
-Coefficient of determination & 0.5 & 0.9 & 0.5 & 0.9\tabularnewline
-Position of relevant component & 1, 2 & 1, 3 & 2, 3 & 1, 2,
-3\tabularnewline
-Decaying factor of eigenvalues & 0.5 & 0.9 & 0.5 & 0.9\tabularnewline
-\bottomrule
-\end{longtable}
+From the possible combination of following parameter combination,
+\emph{32} single response calibration sets were simulated with \emph{5}
+replication of each.
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbf{Number of sample observations}: \emph{50}
+\item
+  \textbf{Number of predictor variables}: \emph{15} and \emph{40}
+\item
+  \textbf{Coefficient of determination \((R^2)\)}: \emph{0.5} and
+  \emph{0.9}
+\item
+  \textbf{Level of multicollinearity}: \emph{0.5} and \emph{0.9}
+\item
+  \textbf{Position of relevant components}: \emph{1} and \emph{2};
+  \emph{1} and \emph{3}; \emph{2} and \emph{3}; \emph{1}, \emph{2} and
+  \emph{3}
+\end{itemize}
+
+\begin{block}{Coefficient of determination denotes information level in
+the simulated dataset}
+
+\end{block}
+
+\begin{block}{Lower the value of level of multicollinearity, better
+(i.e.~predictor variables are independent) and also supports assumption
+of linear model}
+
+\end{block}
 
 \end{frame}
 
 \begin{frame}{A Systematic Comparison}
 
+\includegraphics[width=0.6\linewidth]{images/effect-plot}
+
+\hypertarget{left}{}
+\begin{itemize}
+\tightlist
+\item
+  Bayes PLS has out-performed others methods in all kinds of data
+\item
+  Envelope has performed better than OLS in all situations and PLS in
+  some situations
+\end{itemize}
+
+\hypertarget{right}{}
+\begin{itemize}
+\tightlist
+\item
+  OLS prediction is very poor in noisy data with many predictor
+  variables
+\item
+  Position of relvant component and the decaying factor of eigenvalue
+  has less impact on prediction in all the models
+\end{itemize}
+
+\begin{block}{Small prediction error gives good result and is better}
+
+\end{block}
+
 \end{frame}
 
-\section{Conclusion}\label{conclusion}
+\begin{frame}{A Systematic Comparison}
 
-\begin{frame}{Simulation Design}
+\includegraphics[width=0.6\linewidth]{images/prediction-error-selected}
 
-grow
+\hypertarget{left}{}
+\begin{itemize}
+\tightlist
+\item
+  Bayes PLS has approached to its minimum error with very few component
+  and remained low for additional component
+\item
+  PLS has moderate performance but better than envelope in many
+  situations.
+\end{itemize}
 
-shrink
+\hypertarget{right}{}
+\begin{itemize}
+\tightlist
+\item
+  OLS prediction is poor especially with large number of predictor
+\item
+  Envelope method captured its minimum error and the error increased
+  with additional components
+\end{itemize}
 
-fade-out
+\begin{block}{Number of components are the assumed dimension of relevant
+x-space}
 
-fade-up (also down, left and right!)
-
-visible only once
-
-blue only once
-
-highlight-red
-
-highlight-green
-
-highlight-blue
+\end{block}
 
 \end{frame}
 
-\begin{frame}{Simulatr App}
+\section{Demonstration}\label{demonstration}
 
-\includegraphics[width=0.8\linewidth]{images/simulatr-screenshot}
+\begin{frame}{\texttt{simulatr} Application}
 
 \end{frame}
 

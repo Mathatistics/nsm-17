@@ -9,9 +9,9 @@ output:
     css: css/custom.css
     highlight: tango
     reveal_options:
+      fragments: yes
       pdfMaxPagesPerSlide: 1
       previewLinks: yes
-      fragments: true
     reveal_plugins:
     - notes
     - zoom
@@ -33,6 +33,8 @@ output:
     keep_tex: yes
     slide_level: 2
     theme: Madrid
+  slidy_presentation:
+    highlight: tango
 institute: |
   | **Supervisors**
   | Solve Sæbø, Tryge Almøy
