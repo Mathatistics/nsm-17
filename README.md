@@ -10,7 +10,7 @@ This presentation is created using [Reveal.js](https://github.com/hakimel/reveal
 ## Printing Presentation
 You can print this presentation from following link,
 
-[http://therimalaya.github.io/midway-seminar/#?print-pdf](http://therimalaya.github.io/midway-seminar/?print-pdf)
+[http://therimalaya.github.io/midway-seminar/?print-pdf](http://therimalaya.github.io/midway-seminar/?print-pdf)
 
 The page would appear all jumbled up, but it will print correctly. However, you should use [chrome](https://www.google.com/chrome/browser/desktop/) or [chromium](https://chromium.woolyss.com/download/) browser.
 
