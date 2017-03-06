@@ -60,6 +60,10 @@ Introduction {data-background=#F6FAF5 .header-slide .center}
 
 ## My PhD Plan {data-background=#FAF7F6 .header-slide}
 
+<aside class="notes" data-markdown="example.md">
+  ### Say Something about PLS and simulation in brief
+</aside>
+
 <div id = "left" class = "fragment">
 ```{r eval = ifnot.beamer}
 knitr::include_graphics("images/phd-plan.svg")
