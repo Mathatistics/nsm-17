@@ -1,7 +1,9 @@
-body {
-  background-color: #117d6b;
+/* Main Background Color */
+section#title * {
+  color: whitesmoke;
 }
 
+/* NMBU Logo at bottom right corner */
 body:after {
   background-image: url(../images/logo-nmbu-white-square.png);
   background-size: 100px 80px;
@@ -15,81 +17,57 @@ body:after {
   content:"";
 }
 
-#left {
-  float:left;
-  width: 50%;
+/* small text font color */
+small {
+  color:inherit!important;
 }
 
-#right {
-  float: right;
-  width: 50%;
+/* Supervisors Text */
+div#supervisor-title {
+    margin-top: 50px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+.supervisors{
+  display: inline-block;
 }
 
-.reveal{
-  font-family: Palatino, serif;
-  font-size-adjust: 0.8;
+
+/* Pull date down to bottom */
+h3.date {
+    margin-top: 50px;
+    font-size: 0.9em;
 }
 
-.reveal .slides section .fragment.highlight-mediumgreen,
-.reveal .slides section .fragment.highlight-purple,
-.reveal .slides section .fragment.highlight-bold,
-.reveal .slides section .fragment.highlight-current-mediumgreen,
-.reveal .slides section .fragment.highlight-current-purple,
-.reveal .slides section .fragment.highlight-current-bold {
-  opacity: 1;
-  visibility: visible;
+/* Remove Borders from image */
+.reveal section img {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
 }
 
-.reveal .slides section .fragment.highlight-mediumgreen.visible,
-.reveal .slides section .fragment.highlight-current-mediumgreen.current-fragment{
-  color: #2E8B57;
+/* Hide non-current-visible fragments */
+.fragment.current-display:not(.current-fragment) {
+	  display: none;
 }
 
-.reveal .slides section .fragment.highlight-purple.visible,
-.reveal .slides section .fragment.highlight-current-purple.current-fragment{
-  color: #BA55D3;
+/* Keep all list left aligned */
+ul{
+    float:left;
 }
-
-.reveal .slides section .fragment.highlight-bold.visible{
-  font-weight:bold;
+/* Keep middle vertically */
+#middle-container{
+    display: flex;
+    justify-content: center;
 }
-.reveal section img { 
-  background:none; 
-  border:none; 
-  box-shadow:none; 
+#middle-content {
+    align-self: center;
 }
-.reveal .slides section .header-slide,
-.reveal .slides section .header-slide h1,
-.reveal .slides section .header-slide h2,
-.reveal .slides section .header-slide h3,
-.reveal .slides section .header-slide h4,
-.reveal .slides section .header-slide h5,
-.reveal .slides section .header-slide h6,
-.reveal .slides section .header-slide p,
-.reveal .slides section .header-slide span
-{
-  color:#117d6b;
+/* Title-Slide Font Color */
+.reveal .titleslide.has-light-background h1 {
+    color: #117d6b;
 }
-
-.reveal .slides section .fragment.hide-out {
-  opacity: 0;
-  visibility: hidden; 
-  display:none;
-}
-.reveal .slides section .fragment.hide-out.current-fragment {
-  opacity: 1;
-  visibility: visible;
-  display:initial;
-}
-.top{
-  top: 0!important;
-}
-.header-slide span.citation {
-  color: #21a3ce!important;
-}
-#simulatr-link a,
-#simulatr-link a:hover,
-#simulatr-link a:visited,
-#simulatr-link a:active{
-  color: #117d6b;
+/* Invert Reference color */
+section#references h1 {
+    color: #FAF7F6;
 }
