@@ -107,7 +107,7 @@ A comparative study of different estimation methods using simulated data {data-b
 
 ## Overview {data-transition="none slide-out"}
 
-*Four estimtion methods were considered*
+*Four estimation methods were considered*
 
 <div class = "row ">
 <div class = "col-6">
