@@ -64,7 +64,7 @@ knitr::include_graphics("images/phd-plan.svg")
 
 ## What I learn ##
 
-> - Advanced Multivariate Model and technique to analyze it
+> - Advanced Multivariate methods and their properties
 > - Programming concept for developing statistical packages and applications for various statistical methods
 > - Extending and improving existing methods in statistics
 > - And, obviously, to properly document what I have done
@@ -146,16 +146,20 @@ From the combination of above parameters, **32** datasets were simulated with **
 
 ## A Systematic Comparison {data-transition="slide-in none"}
 
+<div class="row">
+<div class="col-6 fragment">
 ```{r, out.width="100%"}
-knitr::include_graphics("images/effect-plot.svg")
+knitr::include_graphics("images/effect-plot-min.svg")
 ```
+</div>
+<div class="col-6"><br>
 
-<ul>
-<li class="fragment current-display">Bayes PLS has out-performed others methods in all kinds of data</li>
-<li class="fragment current-display">Envelope has performed better than OLS in all situations and PLS in some situations</li>
-<li class="fragment current-display">OLS prediction is very poor in noisy data with many predictor variables</li>
-<li class="fragment current-display">Position of relvant component and the decaying factor of eigenvalue has less impact on prediction in all the models</li>
-</ul>
+> - Bayes PLS has out-performed others methods
+> - Envelope performed better than OLS
+> - OLS prediction: very poor in noisy data 
+
+</div>
+</div>
 
 ## A Systematic Comparison {data-transition="none slide-out"}
 
@@ -163,7 +167,7 @@ knitr::include_graphics("images/effect-plot.svg")
 knitr::include_graphics("images/prediction-error-selected.svg")
 ```
 
-<ul>
+<ul id="display-current-container">
 <li class="fragment current-display">Bayes PLS has approached to its minimum error with very few component and remained low for additional component</li>
 <li class="fragment current-display">PLS has moderate performance but better than envelope in many situations.</li>
 <li class="fragment current-display">OLS prediction is poor especially with large number of predictor</li>
@@ -183,7 +187,7 @@ _It is an extension of `simrel` [@saebo2015simrel] r-package for simulating **mu
 knitr::include_graphics("images/reduction-model.svg")
 ```
 
-<ul>
+<ul  id="display-current-container">
 <li class="fragment current-display">Based on idea of **reduction of random regression model** </li>
 <li class="fragment current-display">It separates $X$ into subspaces that is relevant and irrelevant for predicting each response</li>
 <li class="fragment current-display">It re-parameterize the population model,

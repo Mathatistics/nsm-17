@@ -47,8 +47,16 @@ h3.date {
 }
 
 /* Hide non-current-visible fragments */
-.fragment.current-display:not(.current-fragment) {
+@media screen{
+  .fragment.current-display:not(.current-fragment) {
 	  display: none;
+  }
+}
+@media print{
+   #display-current-container{
+     display: block;
+    page-break-before: always!important;
+  }  
 }
 
 /* Keep all list left aligned */

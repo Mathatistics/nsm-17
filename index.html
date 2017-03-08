@@ -88,7 +88,7 @@
 <div id="supervisor-title">Supervisors:</div>
     <div class="supervisors author"><small>Solve Sæbø</small></div>
     <div class="supervisors author"><small>Tryge Almøy</small></div>
-    <h3 class="date">07 March, 2017</h3>
+    <h3 class="date">08 March, 2017</h3>
 </section>
 
 <section><section id="introduction" class="titleslide slide level1" data-background="#F6FAF5"><h1>Introduction</h1></section><section id="my-phd-plan" class="slide level2">
@@ -110,7 +110,7 @@
 </section><section id="what-i-learn" class="slide level2">
 <h2>What I learn</h2>
 <ul>
-<li class="fragment">Advanced Multivariate Model and technique to analyze it</li>
+<li class="fragment">Advanced Multivariate methods and their properties</li>
 <li class="fragment">Programming concept for developing statistical packages and applications for various statistical methods</li>
 <li class="fragment">Extending and improving existing methods in statistics</li>
 <li class="fragment">And, obviously, to properly document what I have done</li>
@@ -181,25 +181,23 @@ Today I will talk about:
 </div>
 </section><section id="a-systematic-comparison" class="slide level2" data-transition="slide-in none">
 <h2>A Systematic Comparison</h2>
-<p><img src="images/effect-plot.svg" width="100%" /></p>
+<div class="row">
+<div class="col-6 fragment">
+<p><img src="images/effect-plot-min.svg" width="100%" /></p>
+</div>
+<div class="col-6">
+<p><br></p>
 <ul>
-<li class="fragment current-display">
-Bayes PLS has out-performed others methods in all kinds of data
-</li>
-<li class="fragment current-display">
-Envelope has performed better than OLS in all situations and PLS in some situations
-</li>
-<li class="fragment current-display">
-OLS prediction is very poor in noisy data with many predictor variables
-</li>
-<li class="fragment current-display">
-Position of relvant component and the decaying factor of eigenvalue has less impact on prediction in all the models
-</li>
+<li class="fragment">Bayes PLS has out-performed others methods</li>
+<li class="fragment">Envelope performed better than OLS</li>
+<li class="fragment">OLS prediction: very poor in noisy data</li>
 </ul>
+</div>
+</div>
 </section><section id="a-systematic-comparison-1" class="slide level2" data-transition="none slide-out">
 <h2>A Systematic Comparison</h2>
 <p><img src="images/prediction-error-selected.svg" width="100%" /></p>
-<ul>
+<ul id="display-current-container">
 <li class="fragment current-display">
 Bayes PLS has approached to its minimum error with very few component and remained low for additional component
 </li>
@@ -219,7 +217,7 @@ Envelope method captured its minimum error and the error increased with addition
 <div class="fragment">
 <p><em>It is an extension of <code>simrel</code> <span class="citation" data-cites="saebo2015simrel">(Sæbø, Almøy, &amp; Helland, 2015)</span> r-package for simulating <strong>multi-response data</strong></em></p>
 <p><img src="images/reduction-model.svg" width="50%" /></p>
-<ul>
+<ul id="display-current-container">
 <li class="fragment current-display">
 Based on idea of <strong>reduction of random regression model</strong>
 </li>
