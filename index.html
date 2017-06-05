@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Raju Rimal" />
-  <title>PhD Midway Seminar</title>
+  <title>Simulation Tool and its application</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <!-- Revealjs -->
-  <link rel="stylesheet" href="index_files/reveal.js-3.3.0/css/reveal.css"/>
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
 
 
 
-<link rel="stylesheet" href="index_files/reveal.js-3.3.0/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/serif.css" id="theme">
 
 
   <!-- some tweaks to reveal css -->
@@ -60,19 +60,18 @@
 
     <style type="text/css">code{white-space: pre;}</style>
 
-    <link rel="stylesheet" href="css/custom.css"/>
-    <link rel="stylesheet" href="css/simplegrid.css"/>
+    <link rel="stylesheet" href="styles.css"/>
 
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement( 'link' );
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'index_files/reveal.js-3.3.0/css/print/pdf.css' : 'index_files/reveal.js-3.3.0/css/print/paper.css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'index_files/reveal.js-3.3.0.1/css/print/pdf.css' : 'index_files/reveal.js-3.3.0.1/css/print/paper.css';
       document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
     <!--[if lt IE 9]>
-    <script src="index_files/reveal.js-3.3.0/lib/js/html5shiv.js"></script>
+    <script src="index_files/reveal.js-3.3.0.1/lib/js/html5shiv.js"></script>
     <![endif]-->
 
     <link href="index_files/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -82,200 +81,259 @@
     <div class="slides">
 
 <section data-background-color="#117d6b" id ="title">
-    <h1 class="title">PhD Midway Seminar</h1>
-  <h1 class="subtitle"><small>Simulation Tool and its application</small></h1>
+    <h1 class="title">Simulation Tool and its application</h1>
     <div class="author">Raju Rimal</div>
 <div id="supervisor-title">Supervisors:</div>
     <div class="supervisors author"><small>Solve Sæbø</small></div>
     <div class="supervisors author"><small>Tryge Almøy</small></div>
-    <h3 class="date">08 March, 2017</h3>
+<div id="website"><code><a href="http://mathatistics.github.io/nsm-17" class="uri">http://mathatistics.github.io/nsm-17</a></code></div>
+    <h3 class="date">05 June, 2017</h3>
 </section>
 
-<section><section id="introduction" class="titleslide slide level1" data-background="#F6FAF5"><h1>Introduction</h1></section><section id="my-phd-plan" class="slide level2">
-<h2>My PhD Plan</h2>
-<div class="row">
-<div class="col-6 fragment">
-<p><img src="images/phd-plan.svg" /></p>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<div class="flex-container" style="align-items:center;">
+<div class="flex-content">
+<blockquote>
+Man is a tool-using animal. Without tools he is nothing, with tools he is all.
+<footer style="text-align:right;">
+— Thomas Carlyle
+</footer>
+</blockquote>
 </div>
-<div class="col-6 fragment">
-<h3 id="why-i-am-doing-this">Why I am doing this</h3>
-<p><em>Important for:</em></p>
+</div>
+</section>
+<section><section id="some-cases" class="titleslide slide level1" data-background="#F6FAF5"><h1>Some Cases</h1></section><section id="section-1" class="slide level2" data-transition="slide-in none">
+<h2></h2>
+<div class="flex-container-col">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+<p>Case I</p>
+</div>
+<div class="flex-sidebar-content">
 <ul>
-<li class="fragment">Research</li>
-<li class="fragment">Education and</li>
-<li class="fragment">Method Evaluation</li>
+<li>Testing new estimation Methods</li>
+<li>Study its properties</li>
+<li>Study its performance in data with various properties</li>
 </ul>
 </div>
 </div>
-</section><section id="what-i-learn" class="slide level2">
-<h2>What I learn</h2>
+<div id="separator">
+
+</div>
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+<p>Case II</p>
+</div>
+<div class="flex-sidebar-content">
 <ul>
-<li class="fragment">Advanced Multivariate methods and their properties</li>
-<li class="fragment">Programming concept for developing statistical packages and applications for various statistical methods</li>
-<li class="fragment">Extending and improving existing methods in statistics</li>
-<li class="fragment">And, obviously, to properly document what I have done</li>
+<li>Educational use</li>
+<li>Student can learn how a method such as variable removes unrelevant variables</li>
+<li>Student can observe and study the loading weights on relevant and irrelevant principle components</li>
 </ul>
-</section><section id="todays-special" class="slide level2">
-<h2>Today’s Special</h2>
-<div class="fragment">
-Today I will talk about:
 </div>
-<p><br/></p>
+</div>
+</div>
+<div id="separator">
+
+</div>
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+<p>Case III</p>
+</div>
+<div class="flex-sidebar-content">
 <ul>
-<li class="fragment">A <span class="fragment highlight-blue">comparative study</span> of various estimation techniques by simulating linear model data using <a href="https://therimalaya.shinyapps.io/simulatr/"><code>simulatr</code></a> in single response situation <span class="highlight-red fragment">Demonstration</span></li>
-<li class="fragment">Simulation tool (<span class="fragment highlight-blue"><a href="https://therimalaya.shinyapps.io/simulatr/"><code>simulatr</code></a></span>) we are building</li>
-</ul>
-</section></section>
-<section><section id="a-comparative-study-of-different-estimation-methods-using-simulated-data" class="titleslide slide level1" data-background="#F6FAF5"><h1>A comparative study of different estimation methods using simulated data</h1></section><section id="overview" class="slide level2" data-transition="slide-in none">
-<h2>Overview</h2>
-<p><em>Four estimtion methods were considered</em></p>
-<div class="row fragment">
-<div class="col-6">
-<h4 id="ordinary-least-squares-ols">Ordinary Least Squares (OLS)</h4>
-<ul>
-<li>Although <strong>unbiased</strong>, suffer highly from <strong>multicollinearity</strong></li>
-<li>Widely used and can be used as <strong>reference for comparison</strong></li>
-</ul>
-</div>
-<div class="col-6">
-<h4 id="partial-least-squares-pls">Partial Least Squares (PLS)</h4>
-<ul>
-<li><strong>Well established</strong> and widely used method</li>
-<li>Based on Latent Structure and <strong>free of multicollinearity problem</strong></li>
+<li>Comparing various methods (estimation methods, variable selection techniques)</li>
 </ul>
 </div>
 </div>
-</section><section id="overview-1" class="slide level2" data-transition="none slide-out">
-<h2>Overview</h2>
-<p><em>Four estimation methods were considered</em></p>
-<div class="row">
-<div class="col-6">
-<h4 id="envelope">Envelope</h4>
-<ul>
-<li>Relatively <strong>new method</strong> <span class="citation" data-cites="cook2013envelopes">(Cook, Helland, &amp; Su, 2013)</span> and is also based on reduction of regression model</li>
-<li>Based on <strong>Maximum Likelihood</strong> but works better than OLS in <span class="math inline">\(p\)</span> approaches <span class="math inline">\(n\)</span></li>
-</ul>
-</div>
-<div class="col-6">
-<h4 id="bayes-pls">Bayes PLS</h4>
-<ul>
-<li><strong>Bayesian Estimation</strong> of regression coefficient</li>
-<li><strong>Promising performance</strong> was shown in previous studies <span class="citation" data-cites="helland2012near">(I. S. Helland, Sæbø, &amp; Tjelmeland, 2012)</span></li>
-</ul>
 </div>
 </div>
-</section><section id="simulation-design" class="slide level2">
-<h2>Simulation Design</h2>
-<div class="fragment">
-<p>Population Parameters were set as follows:</p>
-<ul>
-<li class="fragment"><strong>Number of sample observations</strong>: <em>50</em></li>
-<li class="fragment"><strong>Number of predictor variables</strong>: <em>15</em> and <em>40</em></li>
-<li class="fragment"><strong>Coefficient of determination <span class="math inline">\((R^2)\)</span></strong>: <em>0.5</em> and <em>0.9</em></li>
-<li class="fragment"><strong>Level of multicollinearity</strong>: <em>0.5</em> and <em>0.9</em></li>
-<li class="fragment"><strong>Position of relevant components</strong>: <em>1</em> and <em>2</em>; <em>1</em> and <em>3</em>; <em>2</em> and <em>3</em>; <em>1</em>, <em>2</em> and <em>3</em></li>
-</ul>
-</div>
-<div class="fragment">
-<p>From the combination of above parameters, <strong>32</strong> datasets were simulated with <strong>5</strong> replication of each, i.e. <strong>160 datasets</strong> with 5 of them having similar population properties.</p>
-</div>
-</section><section id="a-systematic-comparison" class="slide level2" data-transition="slide-in none">
-<h2>A Systematic Comparison</h2>
-<div class="row">
-<div class="col-6 fragment">
-<p><img src="images/effect-plot-min.svg" width="100%" /></p>
-</div>
-<div class="col-6">
-<p><br></p>
-<ul>
-<li class="fragment">Bayes PLS has out-performed others methods</li>
-<li class="fragment">Envelope performed better than OLS</li>
-<li class="fragment">OLS prediction: very poor in noisy data</li>
-</ul>
-</div>
-</div>
-</section><section id="a-systematic-comparison-1" class="slide level2" data-transition="none slide-out">
-<h2>A Systematic Comparison</h2>
-<p><img src="images/prediction-error-selected.svg" width="100%" /></p>
-<ul id="display-current-container">
-<li class="fragment current-display">
-Bayes PLS has approached to its minimum error with very few component and remained low for additional component
-</li>
-<li class="fragment current-display">
-PLS has moderate performance but better than envelope in many situations.
-</li>
-<li class="fragment current-display">
-OLS prediction is poor especially with large number of predictor
-</li>
-<li class="fragment current-display">
-Envelope method captured its minimum error and the error increased with additional components
-</li>
-</ul>
 </section></section>
 <section><section id="simrel-m-a-versatile-tool-for-simulating-multi-response-linear-model-data" class="titleslide slide level1" data-background="#F6FAF5"><h1><code>simrel-m</code>: A versatile tool for simulating multi-response linear model data</h1></section><section id="simrel-m" class="slide level2">
 <h2><code>simrel-m</code></h2>
-<div class="fragment">
-<p><em>It is an extension of <code>simrel</code> <span class="citation" data-cites="saebo2015simrel">(Sæbø, Almøy, &amp; Helland, 2015)</span> r-package for simulating <strong>multi-response data</strong></em></p>
-<p><img src="images/reduction-model.svg" width="50%" /></p>
-<ul id="display-current-container">
-<li class="fragment current-display">
-Based on idea of <strong>reduction of random regression model</strong>
+<ul style="list-style:square;">
+<li class="fragment">
+By changing fewparameters, we can simulate wide range of linear model data. For example,
+<ol style="margin: 30px 30px" class="fragment">
+<li>
+Controlling degree of multicollinearity in the simulated data
 </li>
-<li class="fragment current-display">
-It separates <span class="math inline">\(X\)</span> into subspaces that is relevant and irrelevant for predicting each response
+<li>
+Specify which principle component are relevant for prediction
 </li>
-<li class="fragment current-display">
-It re-parameterize the population model, <span class="math display">\[
-\mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
-\text{, where }\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})
-\]</span>
+</ol>
 </li>
-<li class="fragment current-display">
-It can simulate diverse nature of data with very few parameters
+<li class="fragment">
+Easy to use and has wide application
 </li>
 </ul>
+</section><section id="the-idea-behind" class="slide level2">
+<h2>The idea behind</h2>
+<div id="simrel-m" class="flex-container-col">
+<!-- First Box -->
+<div id="simrel-m-left" class="flex-content flex-container">
+<div class="flex-content">
+<p><img src="images/reduction-model.svg" style="display: block; margin: auto;" /></p>
+</div>
+<div class="flex-content">
+<p><small><em>It is an extension of <code>simrel</code> <span class="citation" data-cites="saebo2015simrel">[1]</span> r-package for simulating <strong>multi-response data</strong></em></small></p>
+</div>
+</div>
+<div id="separator">
+
+</div>
+<!-- Second Box -->
+<div id="simrel-m-right" class="flex-content">
+<ul>
+<li class="fragment">Based on idea of <strong>reduction of random regression model</strong></li>
+<li class="fragment">It separates <span class="math inline">\(X\)</span> into subspaces that is relevant and irrelevant for predicting each response</li>
+<li class="fragment">It re-parameterize the population model, <span class="math display">\[
+\mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
+\text{, where }\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})
+\]</span></li>
+<li class="fragment">It can simulate diverse nature of data with very few parameters</li>
+</ul>
+</div>
 </div>
 </section><section id="how-it-works" class="slide level2">
 <h2>How it works</h2>
 <div class="fragment">
-<div class="row">
-<div class="col-6">
+<br/>
+<div class="flex-container">
+<div class="flex-content">
 <p><img src="images/simrel-broad-flowchart.svg" /></p>
 </div>
-<div class="col-6">
+<div id="how-it-works" class="flex-content">
 <ul>
 <li class="fragment">Collect input parameters from user</li>
 <li class="fragment">Make a covariance matrix satisfying those input parameters</li>
 <li class="fragment">Computes true population properties such as regression coefficients</li>
-<li class="fragment">Sample calibration and validation sets</li>
+<li class="fragment">Sample calibration and validation sets that satisfy the properties of latent space</li>
+<li class="fragment">Rotate the latent variables to obtaine the response and predictors</li>
 </ul>
 </div>
 </div>
 </div>
 </section></section>
-<section><section id="demonstration" class="titleslide slide level1" data-background="#F6FAF5"><h1>Demonstration</h1></section><section id="simulatr-link" class="slide level2 header-slide top" data-background-image="images/simulatr-screenshot.png" data-background-color="#FAF7F6" data-background-size="cover">
-<h2><a href="https://therimalaya.shinyapps.io/simulatr/"><code>simulatr</code> Application</a></h2>
+<section><section id="demonstration" class="titleslide slide level1" data-background="#F6FAF5"><h1>Demonstration</h1></section><section id="simulatr-link" class="slide level2" data-background-image="images/simulatr-screenshot.png" data-background-size="cover">
+<h2><a href="https://therimalaya.shinyapps.io/AppSimulatr/"><code>simulatr</code> Application</a></h2>
 </section></section>
-<section><section id="section" class="titleslide slide level1" data-background-image="images/ThankYou.jpg" data-background-size="90% 90%" data-background-color="#fff" data-background-size="100% 100%"><h1></h1></section></section>
+<section><section id="an-example-of-comparison-of-estimation-methods" class="titleslide slide level1" data-background="#F6FAF5"><h1>An example of comparison of estimation methods</h1></section><section id="design-properties" class="slide level2">
+<h2>Design Properties</h2>
+<p>Consider two set of dataset, both having following common properties,</p>
+<table>
+<colgroup>
+<col style="width: 80%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>Number of observation</strong></td>
+<td style="text-align: left;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>Number of variables</strong></td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong>Number of predictors relevant for each response components</strong></td>
+<td style="text-align: left;">5, 5, 5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>Number of response variables</strong></td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong>Relevant position of response component</strong></td>
+<td style="text-align: left;">1, 6; 2, 5; 3, 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>Position of Response components to rotate together</strong></td>
+<td style="text-align: left;">1, 4; 2, 5; 3</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>The difference between the two datasets are</p>
+<table style="width:94%;">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"> </th>
+<th style="text-align: right;">Design1</th>
+<th style="text-align: right;">Design2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>Decay of eigenvalue <span class="math inline">\((\gamma)\)</span></strong></td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>Coef. of Determination <span class="math inline">\((\rho^2)\)</span></strong></td>
+<td style="text-align: right;">0.8, 0.8, 0.4</td>
+<td style="text-align: right;">0.4, 0.4, 0.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section><section id="estimation-methods" class="slide level2">
+<h2>Estimation Methods</h2>
+<p>For Comparison, lets considered following estimation methods,</p>
+<ul>
+<li>Oridinary Least Squares (<code>ols</code>)</li>
+<li>Principle Component Regression (<code>pcr</code>)</li>
+<li>Partial Least Squares (<code>pls</code>) <span class="citation" data-cites="wold1985partial">[2]</span></li>
+<li>Cannonical Partial Least Squares (<code>cpls</code>) <span class="citation" data-cites="indahl2009canonical">[3]</span></li>
+<li>Envelope Estimation of predictor space (<code>env</code>) <span class="citation" data-cites="cook2010envelope">[4]</span></li>
+</ul>
+</section><section id="prediction-error" class="slide level2">
+<h2>Prediction Error</h2>
+<p>The comparison is based on prediction error. The prediction error is computed as the trace of following quantity,</p>
+<p><span class="math display">\[\underset{m \times m}{\alpha} = \left(
+\hat{\beta} - \beta
+\right)^t \Sigma_{xx} \left(
+\hat{\beta} - \beta
+\right) + \sigma^2\]</span></p>
+<p>This gives an overall prediction performance for all responses.</p>
+</section><section id="a-comparison" class="slide level2">
+<h2>A Comparison</h2>
+<p><img src="index_files/figure-revealjs/unnamed-chunk-14-1.svg" width="100vw" /></p>
+</section></section>
+<section><section id="section-2" class="titleslide slide level1" data-background-image="images/ThankYou.jpg" data-background-size="80%" data-background-color="#fff" data-background-size="100% 100%"><h1></h1></section></section>
 <section><section id="references" class="titleslide slide level1" data-background="#117d6b"><h1>References</h1></section><section id="references-1" class="slide level2 unnumbered">
 <h2>References</h2>
 <div id="refs" class="references">
-<div id="ref-cook2013envelopes">
-<p>Cook, R., Helland, I., &amp; Su, Z. (2013). Envelopes and partial least squares regression. <em>Journal of the Royal Statistical Society: Series B (Statistical Methodology)</em>, <em>75</em>(5), 851–877.</p>
-</div>
-<div id="ref-helland2012near">
-<p>Helland, I. S., Sæbø, S., &amp; Tjelmeland. (2012). Near optimal prediction from relevant components. <em>Scandinavian Journal of Statistics</em>, <em>39</em>(4), 695–713.</p>
-</div>
 <div id="ref-saebo2015simrel">
-<p>Sæbø, S., Almøy, T., &amp; Helland, I. S. (2015). Simrel—A versatile tool for linear model data simulation based on the concept of a relevant subspace and relevant predictors. <em>Chemometrics and Intelligent Laboratory Systems</em>, <em>146</em>, 128–135.</p>
+<p>[1] S. Sæbø, T. Almøy, I.S. Helland, Simrel—A versatile tool for linear model data simulation based on the concept of a relevant subspace and relevant predictors, Chemometrics and Intelligent Laboratory Systems 146 (2015) 128–35.</p>
+</div>
+<div id="ref-wold1985partial">
+<p>[2] H. Wold, Partial least squares, Encyclopedia of Statistical Sciences (1985).</p>
+</div>
+<div id="ref-indahl2009canonical">
+<p>[3] U.G. Indahl, K.H. Liland, T. Næs, Canonical partial least squaresa unified pls approach to classification and regression problems, Journal of Chemometrics 23(9) (2009) 495–504.</p>
+</div>
+<div id="ref-cook2010envelope">
+<p>[4] R.D. Cook, B. Li, F. Chiaromonte, Envelope models for parsimonious and efficient multivariate linear regression, Statistica Sinica (2010) 927–60.</p>
+</div>
+<div id="ref-helland1990partial">
+<p>[5] I.S. Helland, Partial least squares regression and statistical models, Scandinavian Journal of Statistics (1990) 97–114.</p>
 </div>
 </div>
 </section></section>
     </div>
   </div>
 
-  <script src="index_files/reveal.js-3.3.0/lib/js/head.min.js"></script>
-  <script src="index_files/reveal.js-3.3.0/js/reveal.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
 
   <script>
 
@@ -311,8 +369,8 @@ It can simulate diverse nature of data with very few parameters
 
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'index_files/reveal.js-3.3.0/plugin/notes/notes.js', async: true },
-          { src: 'index_files/reveal.js-3.3.0/plugin/chalkboard/chalkboard.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
         ]
       });
     </script>
@@ -321,7 +379,7 @@ It can simulate diverse nature of data with very few parameters
     (function () {
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
       document.getElementsByTagName("head")[0].appendChild(script);
     })();
   </script>

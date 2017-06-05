@@ -1,11 +1,11 @@
 ---
-title: "PhD Midway Seminar"
+title: "Simulation Tool and its application"
 author: "Raju Rimal"
 date: "`r format(Sys.Date(), '%d %B, %Y')`"
 output:
   revealjs::revealjs_presentation:
     template: template.html
-    css: [css/custom.css, css/simplegrid.css]
+    css: styles.css
     theme: serif
     background_transition: fade
     transition: slide
@@ -19,205 +19,163 @@ output:
     - notes
     - chalkboard
     self_contained: no
-supervisors: ['Solve Sæbø', 'Tryge Almøy'] 
-csl: apa.csl
-subtitle: <small>Simulation Tool and its application</small>
+supervisors: ['Solve Sæbø', 'Tryge Almøy']
+csl: simulation.csl
+website: "http://mathatistics.github.io/nsm-17"
 bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warnings = FALSE)
-ifnot.beamer <- knitr::opts_knit$get("rmarkdown.pandoc.to") != "beamer"
 ```
 
 ```{r}
-library(data.table)
-library(ggplot2)
-library(simrel)
+pkgs <- c("pls", "envlp", "simulatr", "pander", "tidyverse")
+for (pkg in pkgs) require(pkg, quietly = T, warn.conflicts = F, character.only = T)
 ```
+---
 
-Introduction {data-background="#F6FAF5"}
+## {.center}
+
+<div class="flex-container" style="align-items:center;">
+
+<div class="flex-content">
+
+> Man is a tool-using animal. Without tools he is nothing, with tools he is all.
+  <footer style="text-align:right;">— Thomas Carlyle</footer>
+
+</div>
+
+</div>
+
+Some Cases {data-background="#F6FAF5"}
 =============================================================================
 
-## My PhD Plan ##
+## {data-transition="slide-in none"}
 
-<div class="row">
-<div class="col-6 fragment">
-
-```{r eval = ifnot.beamer}
-knitr::include_graphics("images/phd-plan.svg")
-```
-
+<div class="flex-container-col">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+Case I
 </div>
-<div class="col-6 fragment">
+<div class="flex-sidebar-content">
 
-### Why I am doing this ###
-
-*Important for:* 
-
-> - Research 
-> - Education and 
-> - Method Evaluation
+- Testing new estimation Methods
+- Study its properties
+- Study its performance in data with various properties
 
 </div>
 </div>
 
-## What I learn ##
+<div id="separator"></div>
 
-> - Advanced Multivariate methods and their properties
-> - Programming concept for developing statistical packages and applications for various statistical methods
-> - Extending and improving existing methods in statistics
-> - And, obviously, to properly document what I have done
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+Case II
+</div>
 
-## Today's Special ##
+<div class="flex-sidebar-content">
 
-<div class="fragment">Today I will talk about:</div><br/>
-
-> - A <span class="fragment highlight-blue">comparative study</span> of various estimation techniques by simulating linear model data using [`simulatr`](https://therimalaya.shinyapps.io/simulatr/) in single response situation <span class="highlight-red fragment">Demonstration</span>
-> - Simulation tool (<span class="fragment highlight-blue">[`simulatr`](https://therimalaya.shinyapps.io/simulatr/)</span>) we are building
-
-
-A comparative study of different estimation methods using simulated data {data-background="#F6FAF5"}
-========================================================================
-
-## Overview {data-transition="slide-in none"}
-
-*Four estimtion methods were considered*
-
-<div class = "row fragment">
-<div class = "col-6">
-
-#### Ordinary Least Squares (OLS) ####
-
-- Although **unbiased**, suffer highly from **multicollinearity**
-- Widely used and can be used as **reference for comparison**
-
+- Educational use
+- Student can learn how a method such as variable removes unrelevant variables
+- Student can observe and study the loading weights on relevant and irrelevant principle components
 
 </div>
-<div class = "col-6">
-
-#### Partial Least Squares (PLS) ####
-
-- **Well established** and widely used method
-- Based on Latent Structure and **free of multicollinearity problem**
-
-
+  
 </div>
 </div>
 
-## Overview {data-transition="none slide-out"}
+<div id="separator"></div>
 
-*Four estimation methods were considered*
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+Case III
+</div>
+<div class="flex-sidebar-content">
 
-<div class = "row ">
-<div class = "col-6">
-
-#### Envelope ####
-
-- Relatively **new method** [@cook2013envelopes] and is also based on reduction of regression model
-- Based on **Maximum Likelihood** but works better than OLS in $p$ approaches $n$
+- Comparing various methods (estimation methods, variable selection techniques)
 
 </div>
-<div class = "col-6">
-
-#### Bayes PLS ####
-
-- **Bayesian Estimation** of regression coefficient
-- **Promising performance** was shown in previous studies [@helland2012near]
-
+  
+</div>
 </div>
 </div>
 
-## Simulation Design ##
-
-. . .
-
-Population Parameters were set as follows:
-
-> - **Number of sample observations**: _50_
-> - **Number of predictor variables**: _15_ and _40_
-> - **Coefficient of determination $(R^2)$**: _0.5_ and _0.9_
-> - **Level of multicollinearity**: _0.5_ and _0.9_
-> - **Position of relevant components**: _1_ and _2_; _1_ and _3_; _2_ and _3_; _1_, _2_ and _3_
-
-. . .
-
-From the combination of above parameters, **32** datasets were simulated with **5** replication of each, i.e. **160 datasets** with 5 of them having similar population properties.
-
-## A Systematic Comparison {data-transition="slide-in none"}
-
-<div class="row">
-<div class="col-6 fragment">
-```{r, out.width="100%"}
-knitr::include_graphics("images/effect-plot-min.svg")
-```
-</div>
-<div class="col-6"><br>
-
-> - Bayes PLS has out-performed others methods
-> - Envelope performed better than OLS
-> - OLS prediction: very poor in noisy data 
-
-</div>
-</div>
-
-## A Systematic Comparison {data-transition="none slide-out"}
-
-```{r, out.width="100%"}
-knitr::include_graphics("images/prediction-error-selected.svg")
-```
-
-<ul id="display-current-container">
-<li class="fragment current-display">Bayes PLS has approached to its minimum error with very few component and remained low for additional component</li>
-<li class="fragment current-display">PLS has moderate performance but better than envelope in many situations.</li>
-<li class="fragment current-display">OLS prediction is poor especially with large number of predictor</li>
-<li class="fragment current-display">Envelope method captured its minimum error and the error increased with additional components</li>
-</ul>
 
 `simrel-m`: A versatile tool for simulating multi-response linear model data {data-background="#F6FAF5"}
-=============================================================================
+=========================================================================================================
 
 ## `simrel-m` ##
 
-. . .
-
-_It is an extension of `simrel` [@saebo2015simrel] r-package for simulating **multi-response data**_
-
-```{r, eval=ifnot.beamer, out.width="50%"}
-knitr::include_graphics("images/reduction-model.svg")
-```
-
-<ul  id="display-current-container">
-<li class="fragment current-display">Based on idea of **reduction of random regression model** </li>
-<li class="fragment current-display">It separates $X$ into subspaces that is relevant and irrelevant for predicting each response</li>
-<li class="fragment current-display">It re-parameterize the population model,
-$$
-\mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
-\text{, where }\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})
-$$
+<ul style="list-style:square;">
+<li class="fragment"> By changing fewparameters, we can simulate wide range of linear model data. For example,
+<ol style="margin: 30px 30px" class="fragment">
+<li>Controlling degree of multicollinearity in the simulated data</li>
+<li>Specify which principle component are relevant for prediction</li>
+</ol>
 </li>
-<li class="fragment current-display">It can simulate diverse nature of data with very few parameters </li>
+<li class="fragment">Easy to use and has wide application</li>
 </ul>
 
+## The idea behind
+
+<div class="flex-container-col" id="simrel-m">
+
+<!-- First Box -->
+<div class="flex-content flex-container" id="simrel-m-left">
+
+
+<div class="flex-content">
+```{r, fig.align='center'}
+knitr::include_graphics("images/reduction-model.svg")
+```
+</div>
+
+<div class="flex-content">
+<small>_It is an extension of `simrel` [@saebo2015simrel] r-package for simulating **multi-response data**_</small>
+</div>
+
+</div>
+
+<div id = "separator"></div>
+
+<!-- Second Box -->
+<div class="flex-content" id="simrel-m-right">
+> - Based on idea of **reduction of random regression model** 
+- It separates $X$ into subspaces that is relevant and irrelevant for predicting each response
+- It re-parameterize the population model,
+  $$
+  \mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
+  \text{, where }\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})
+  $$
+- It can simulate diverse nature of data with very few parameters
+</div>
+  
+</div>
 
 ## How it works 
 
 . . .
 
-<div class="row">
-<div class="col-6">
+<br/>
+<div class = "flex-container">
+<div class = "flex-content">
 
-```{r, eval = ifnot.beamer}
+```{r}
 knitr::include_graphics("images/simrel-broad-flowchart.svg")
 ```
 
 </div>
-<div class="col-6">
+
+<div class = "flex-content" id = "how-it-works">
 
 > - Collect input parameters from user
 > - Make a covariance matrix satisfying those input parameters
 > - Computes true population properties such as regression coefficients
-> - Sample calibration and validation sets
+> - Sample calibration and validation sets that satisfy the properties of latent space
+> - Rotate the latent variables to obtaine the response and predictors
 
 </div>
 </div>
@@ -225,8 +183,243 @@ knitr::include_graphics("images/simrel-broad-flowchart.svg")
 Demonstration {data-background="#F6FAF5"}
 =============================================================================
 
-## <a href="https://therimalaya.shinyapps.io/simulatr/">`simulatr` Application</a> {data-background-image='images/simulatr-screenshot.png' data-background-color=#FAF7F6 .header-slide data-background-size='cover' .top #simulatr-link}
+## <a href="https://therimalaya.shinyapps.io/AppSimulatr/">`simulatr` Application</a> {data-background-image='images/simulatr-screenshot.png' data-background-size='cover' #simulatr-link}
 
-# {data-background-image='images/ThankYou.jpg' data-background-size='90% 90%' data-background-color=#fff data-background-size='100% 100%'}
+
+An example of comparison of estimation methods {data-background="#F6FAF5"}
+============================================================
+
+## Design Properties
+
+Consider two set of dataset, both having following common properties,
+
+```{r}
+source("functions.R")
+opts <- list(
+  n      = rep(100, 2),
+  p      = rep(16, 2),
+  q      = rep("5, 5, 5", 2),
+  m      = rep(5, 2),
+  relpos = rep("1, 6; 2, 5; 3, 4", 2),
+  gamma  = rep(c(0.2, 0.8), 1),
+  R2     = rep(c("0.8, 0.8, 0.4", "0.4, 0.4, 0.4"), each = 1),
+  ypos   = rep("1, 4; 2, 5; 3", 2),
+  ntest  = rep(100000, 2)
+)
+design <- opts %>% prepare_design %>% transpose %>%
+  as_data_frame %>%
+  mutate(type = "multivariate")
+mdls   <- c("OLS", "PCR", "PLS", "CPLS", "Xenv")
+evl <- !file.exists("pred-err.rdata")
+```
+
+```{r}
+common_prop <- do.call(rbind, opts[c("n", "p", "q", "m", "relpos", "ypos")]) %>% 
+  apply(1, unique) %>% 
+  as.matrix()
+rownames(common_prop) <- c(
+  "Number of observation",
+  "Number of variables",
+  "Number of predictors relevant for each response components",
+  "Number of response variables",
+  "Relevant position of response component",
+  "Position of Response components to rotate together"
+)
+pander(common_prop, split.cells = Inf, justify = "rl")
+```
+
+. . .
+
+The difference between the two datasets are
+ 
+```{r}
+design_table <- do.call(rbind, opts[c("gamma", "R2")])
+dimnames(design_table) <- list(
+  c("Decay of eigenvalue $(\\gamma)$",
+    "Coef. of Determination $(\\rho^2)$"),
+  paste0("Design", 1:2))
+pander::pander(
+  design_table, type = "rmarkdown", 
+  split.cells = c(40, rep(30, 2)), split.tables = Inf,
+  justify = paste(rep("r", ncol(design_table) + 1), collapse = "")
+)
+```
+
+## Estimation Methods
+
+For Comparison, lets considered following estimation methods,
+
+- Oridinary Least Squares (`ols`)
+- Principle Component Regression (`pcr`)
+- Partial Least Squares (`pls`) [@wold1985partial]
+- Cannonical Partial Least Squares (`cpls`) [@indahl2009canonical]
+- Envelope Estimation of predictor space (`env`) [@cook2010envelope, @helland1990partial]
+
+## Prediction Error
+
+The comparison is based on prediction error. The prediction error is computed as the trace of following quantity,
+
+$$\underset{m \times m}{\alpha} = \left(
+\hat{\beta} - \beta
+\right)^t \Sigma_{xx} \left(
+\hat{\beta} - \beta
+\right) + \sigma^2$$
+
+This gives an overall prediction performance for all responses.
+
+## A Comparison
+
+```{r, eval = evl}
+set.seed(123)
+sim_obj <- map_df(1:2, function(d){
+  map_df(1:10, function(r){
+    tibble(
+      id = paste('D', d, r, sep = "-"),
+      obj = list(do.call(simulatr, design[d,] %>% t() %>% .[, 1])),
+      Train = obj %>% map(~data.frame(x = I(.x$X), y = I(.x$Y))),
+      Test = obj %>% map(~data.frame(x = I(.x$testX), y = I(.x$testY)))
+    )
+  }, .id = "replicate")
+}, .id = "design")
+```
+
+```{r, eval = evl}
+fit <- sim_obj %>%
+  group_by(design, replicate, id) %>%
+  transmute(
+    ols   = map(Train, ~lm(y ~ x, data = .)),
+    pcr   = map(Train, ~pcr(y ~ x, data = ., ncomp = 10)),
+    pls   = map(Train, ~plsr(y ~ x, data = ., ncomp = 10)),
+    cpls = map(Train, ~cppls(y ~ x, data = ., ncomp = 10)),
+    xenv  = map(Train, ~map(1:10, function(nc) with(., xenv(x, y, u = nc))))
+  )
+names(fit)[-c(1:3)] <- mdls
+```
+
+```{r, eval = evl}
+coef <- fit %>%
+  group_by(design, replicate, id) %>%
+  transmute(
+    ols    = map(OLS,   ~get_beta("ols")(.x)),
+    pcr    = map(PCR,   ~get_beta("pcr")(.x)),
+    pls    = map(PLS,   ~get_beta("pls")(.x)),
+    cpls = map(CPLS, ~get_beta("cpls")(.x)),
+    xenv   = map(Xenv,  ~get_beta("xenv")(.x))
+  )
+names(coef)[-c(1:3)] <- mdls
+```
+
+```{r, eval = evl}
+trueValue <- sim_obj %>%
+  group_by(design, replicate, id) %>%
+  transmute(
+    p         = map_dbl(obj, "p"),
+    m         = map_dbl(obj, "m"),
+    n         = map_dbl(obj, "n"),
+    minerror  = map(obj, "minerror"),
+    trueBeta  = map(obj, "beta"),
+    testData  = map(obj, ~data.frame(x = I(.x$testX), y = I(.x$testY))),
+    sigmaTest = map(obj, ~cov(.x[["testX"]])),
+    sigma     = map(obj, ~with(.x, Sigma[-c(1:m), -c(1:m)]))
+  )
+```
+
+```{r, eval = evl}
+predErr <- map_df(`names<-`(mdls, mdls), function(mdl){
+  coef %>%
+    group_by(design, replicate, id) %>%
+    select_(mdl = mdl) %>%
+    left_join(trueValue) %>%
+    do(with(., pmap_df(list(mdl, minerror, trueBeta, sigma), getPredErr)))
+}, .id = "Model")
+save(predErr, file = "pred-err.rdata")
+```
+
+```{r, eval = !evl}
+load("pred-err.rdata")
+```
+
+```{r}
+myData <- do.call(tibble, opts) %>% 
+  mutate(design = as.character(1:n())) %>% 
+  right_join(predErr, by = "design") %>% 
+  mutate_if(is.character, as.factor) %>% 
+  mutate_at("gamma", as.factor) %>% 
+  rename(pred_err = without_norm)
+
+avg_pred_err <- myData %>% 
+  group_by(Model, design, comp, R2, gamma) %>% 
+  do(mean_se(.$pred_err)) %>% 
+  rename(pred_err = y, upper = ymax, lower = ymin)
+avgPredErr <- avg_pred_err %>%
+  group_by(Model, design) %>%
+  summarise(
+    comp = comp[which.min(pred_err)],
+    pred_err = min(pred_err),
+    label = paste0("(", comp, ", ", round(pred_err, 2), ")")
+  )
+topBest <- avgPredErr %>% 
+  ungroup() %>% 
+  group_by(design) %>% 
+  summarize(
+    Model = Model[which.min(pred_err)],
+    pred_err = min(pred_err)
+  )
+```
+
+
+```{r, out.width='100vw', fig.asp=0.6, fig.width=7, dev='svg'}
+dta <- predErr %>% 
+  rename(pred_err = without_norm,
+         Method = Model) %>% 
+  ungroup() %>% 
+  select(Method, design, replicate, pred_err, comp)
+dta_ols <- dta %>% filter(Method == "OLS", comp == 1) %>% 
+  group_by(Method, design, comp) %>% 
+  summarise(pred_err = mean(pred_err)) %>% 
+  ungroup() %>% 
+  select(-Method)
+plt <- qplot(
+  comp, pred_err, 
+  group = replicate,
+  color = I("grey"),
+  geom = c("point", "line"), 
+  data = dta %>% filter(Method != "OLS"),
+  size = I(1))
+plt <- plt + 
+  geom_hline(data = dta_ols, group = 1, linetype = 2,
+             color = "red", aes(yintercept = pred_err)) +
+  facet_grid(design ~ Method, labeller = label_both) +
+  stat_summary(group = 1, fun.data = mean_se, geom = "ribbon", fill = "blue", alpha = 0.5, color = NA) +
+  stat_summary(group = 1, fun.y = mean, color = "red", size = 0.5, geom = "line") +
+  stat_summary(group = 1, fun.y = mean, color = "red", size = 0.5, geom = "point") +
+  labs(x = "Number of components", y = "Average Prediction Error") +
+  scale_x_continuous(breaks = seq(0, 10, 2))
+plt + geom_point(
+  shape = 21, 
+  data = avgPredErr %>% 
+    filter(Model != "OLS") %>% 
+    rename(Method = Model), 
+  group = 1
+) + geom_text(
+  family = "mono", 
+  group = 1, aes(label = label),
+  vjust = 2,
+  data = avgPredErr %>% 
+    filter(Model != "OLS") %>% 
+    rename(Method = Model)
+) + geom_text(
+  x = Inf, y = Inf,
+  label = "Winner",
+  data = topBest %>% 
+    rename(Method = Model),
+  group = 1, 
+  vjust = 1, 
+  hjust = 1,
+  color = "red"
+)
+```
+
+# {data-background-image='images/ThankYou.jpg' data-background-size='80%' data-background-color=#fff data-background-size='100% 100%'}
 # References {data-background="#117d6b"}
 ## References
