@@ -78,7 +78,7 @@ Case II
 <div class="flex-sidebar-content">
 
 - Educational use
-- Student can learn how a method such as variable removes unrelevant variables
+- Student can learn how a method such as variable selection removes irrelevant variables
 - Student can observe and study the loading weights on relevant and irrelevant principle components
 
 </div>
@@ -171,11 +171,11 @@ knitr::include_graphics("images/simrel-broad-flowchart.svg")
 
 <div class = "flex-content" id = "how-it-works">
 
-> - Collect input parameters from user
-> - Make a covariance matrix satisfying those input parameters
+> - Collects input parameters from user
+> - Makes a covariance matrix satisfying those input parameters
 > - Computes true population properties such as regression coefficients
-> - Sample calibration and validation sets that satisfy the properties of latent space
-> - Rotate the latent variables to obtaine the response and predictors
+> - Samples calibration and validation sets that satisfy the properties of latent space
+> - Rotates the latent variables to obtaine the response and predictors
 
 </div>
 </div>
@@ -191,7 +191,7 @@ An example of comparison of estimation methods {data-background="#F6FAF5"}
 
 ## Design Properties
 
-Consider two set of dataset, both having following common properties,
+Consider two sets of data, both having following common properties,
 
 ```{r}
 source("functions.R")
