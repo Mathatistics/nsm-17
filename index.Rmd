@@ -19,18 +19,19 @@ output:
     - notes
     - chalkboard
     self_contained: no
-supervisors: ['Solve Sæbø', 'Tryge Almøy']
+    center: yes
+supervisors: ['Solve Sæbø', 'and',  'Trygve Almøy']
 csl: simulation.csl
 website: "http://mathatistics.github.io/nsm-17"
 bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warnings = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warnings = FALSE, dev = "svg")
 ```
 
 ```{r}
-pkgs <- c("pls", "envlp", "simulatr", "pander", "tidyverse")
+pkgs <- c("pls", "envlp", "simulatr", "pander", "tidyverse", "reshape2")
 for (pkg in pkgs) require(pkg, quietly = T, warn.conflicts = F, character.only = T)
 ```
 ---
@@ -48,142 +49,131 @@ for (pkg in pkgs) require(pkg, quietly = T, warn.conflicts = F, character.only =
 
 </div>
 
-Some Cases {data-background="#F6FAF5"}
-=============================================================================
+# `simrel-m`: A versatile tool for simulating multi-response linear model data {data-background="#F6FAF5"}
 
-## {data-transition="slide-in none"}
+## Why `simrel-m`
 
-<div class="flex-container-col">
-<div class="flex-content flex-container">
-<div class="flex-content flex-title">
-Case I
-</div>
-<div class="flex-sidebar-content">
-
-- Testing new estimation Methods
-- Study its properties
-- Study its performance in data with various properties
-
-</div>
-</div>
-
-<div id="separator"></div>
-
-<div class="flex-content fragment">
-<div class="flex-content flex-container">
-<div class="flex-content flex-title">
-Case II
-</div>
-
-<div class="flex-sidebar-content">
-
-- Educational use
-- Student can learn how a method such as variable selection removes irrelevant variables
-- Student can observe and study the loading weights on relevant and irrelevant principle components
-
-</div>
-  
-</div>
-</div>
-
-<div id="separator"></div>
-
-<div class="flex-content fragment">
-<div class="flex-content flex-container">
-<div class="flex-content flex-title">
-Case III
-</div>
-<div class="flex-sidebar-content">
-
-- Comparing various methods (estimation methods, variable selection techniques)
-
-</div>
-  
-</div>
-</div>
-</div>
-
-
-`simrel-m`: A versatile tool for simulating multi-response linear model data {data-background="#F6FAF5"}
-=========================================================================================================
-
-## `simrel-m` ##
-
+<div class="flex-container">
+<br/>
+<div class="flex-content" style="flex:4">
 <ul style="list-style:square;">
-<li class="fragment"> By changing fewparameters, we can simulate wide range of linear model data. For example,
-<ol style="margin: 30px 30px" class="fragment">
+<li class="fragment" data-fragment-index="1"> By changing few parameters, we can simulate wide range of linear model data. For example,
+<ol style="margin: 30px 30px" class="fragment"  data-fragment-index="2">
 <li>Controlling degree of multicollinearity in the simulated data</li>
 <li>Specify which principle component are relevant for prediction</li>
 </ol>
 </li>
-<li class="fragment">Easy to use and has wide application</li>
+<li class="fragment"  data-fragment-index="3">It is easy to use and has wide application</li>
 </ul>
+</div>
+<div class="flex-content fragment" style="flex:3" data-fragment-index="2">
+```{r, out.width='100%', fig.width=5, fig.asp=1}
+knitr::include_graphics("gif-factory/multicollinearity.gif")
+```
+</div>
+</div>
+
 
 ## The idea behind
 
-<div class="flex-container-col" id="simrel-m">
-
-<!-- First Box -->
-<div class="flex-content flex-container" id="simrel-m-left">
-
+<div class="flex-container">
 
 <div class="flex-content">
-```{r, fig.align='center'}
-knitr::include_graphics("images/reduction-model.svg")
+
+```{r, fig.align='center', out.width = "100%", fig.cap="Subspace space of X and Y acting on reduced regression model"}
+knitr::include_graphics("gif-factory/reduction-model.gif")
 ```
-</div>
-
-<div class="flex-content">
-<small>_It is an extension of `simrel` [@saebo2015simrel] r-package for simulating **multi-response data**_</small>
-</div>
-
 </div>
 
 <div id = "separator"></div>
 
 <!-- Second Box -->
-<div class="flex-content" id="simrel-m-right">
+<div class="flex-content">
 > - Based on idea of **reduction of random regression model** 
 - It separates $X$ into subspaces that is relevant and irrelevant for predicting each response
 - It re-parameterize the population model,
   $$
-  \mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
-  \text{, where }\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})
-  $$
-- It can simulate diverse nature of data with very few parameters
+  \mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}$$
+  where $\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})$, 
+- changing few parameters can give wide range of properties in simulated data.
 </div>
   
 </div>
 
 ## How it works 
 
-. . .
-
-<br/>
-<div class = "flex-container">
-<div class = "flex-content">
-
 ```{r}
-knitr::include_graphics("images/simrel-broad-flowchart.svg")
+sim_obj <- simulatr::simulatr(
+  n = 100, p = 10, q = c(5, 4), 
+  relpos = list(c(1, 2), c(3, 5)), 
+  gamma = 0.7, R2 = c(0.5, 0.9), 
+  m = 4, ypos = list(c(1, 4), c(2, 3)),
+  type = "multivariate"
+)
+source("plot-functions.R")
 ```
 
+```{r, out.width='100%', fig.asp=0.35, results='hide', fig.width=12}
+relpred_plot <- plot(cov.df(sim_obj, type = "relpred", ordering = T), type = "relpred")
+rotation_plot <- plot(cov.df(sim_obj, type = "rotation", ordering = T), type = "rotation")
+relpos_plot <- plot(cov.df(sim_obj, type = "relpos", ordering = T), type = "relpos")
+thmPlus <- theme(text = element_text(size = 18))
+```
+
+<div class="flex-container-col">
+<div class="flex-content flex-container">
+<div class="flex-content fragment" data-fragment-index="1">
+```{r, fig.asp=1.1, out.width='100%', fig.width=5, dev.args = list(bg="transparent")}
+relpos_plot + thmPlus
+```  
+</div>
+<div class="flex-content fragment" data-fragment-index="2">
+```{r, fig.asp=1.1, out.width='100%', fig.width=5, dev.args = list(bg="transparent")}
+rotation_plot + thmPlus
+```  
+</div>
+<div class="flex-content fragment" data-fragment-index="3">
+```{r, fig.asp=1.1, out.width='100%', fig.width=5, dev.args = list(bg="transparent")}
+relpred_plot + thmPlus
+```  
+</div>
+</div>
+<div class="flex-content flex-container">
+<div class="flex-content fragment" data-fragment-index="1">
+- Get parameter setting from users
+- Create Covariance matrix
+</div>
+<div class="flex-content fragment" data-fragment-index="2">
+- Create Rotation Matrix
+- Rotate the sampled Latent variables
+</div>
+</div>
 </div>
 
-<div class = "flex-content" id = "how-it-works">
 
-> - Collects input parameters from user
-> - Makes a covariance matrix satisfying those input parameters
-> - Computes true population properties such as regression coefficients
-> - Samples calibration and validation sets that satisfy the properties of latent space
-> - Rotates the latent variables to obtaine the response and predictors
+<!-- <br/> -->
+<!-- <div class = "flex-container"> -->
+<!-- <div class = "flex-content"> -->
 
-</div>
-</div>
+<!-- ```{r} -->
+<!-- knitr::include_graphics("images/simrel-broad-flowchart.svg") -->
+<!-- ``` -->
 
-Demonstration {data-background="#F6FAF5"}
-=============================================================================
+<!-- </div> -->
 
-## <a href="https://therimalaya.shinyapps.io/AppSimulatr/">`simulatr` Application</a> {data-background-image='images/simulatr-screenshot.png' data-background-size='cover' #simulatr-link}
+<!-- <div class = "flex-content" id = "how-it-works"> -->
+
+<!-- > - Collects input parameters from user -->
+<!-- > - Makes a covariance matrix satisfying those input parameters -->
+<!-- > - Computes true population properties such as regression coefficients -->
+<!-- > - Samples calibration and validation sets that satisfy the properties of latent space -->
+<!-- > - Rotates the latent variables to obtaine the response and predictors -->
+
+<!-- </div> -->
+<!-- </div> -->
+
+# A web interface {data-background="#F6FAF5"}
+## {data-background-image='screenshots/screenshot.gif' data-background-size='auto 95%'}
 
 
 An example of comparison of estimation methods {data-background="#F6FAF5"}
@@ -254,18 +244,6 @@ For Comparison, lets considered following estimation methods,
 - Partial Least Squares (`pls`) [@wold1985partial]
 - Cannonical Partial Least Squares (`cpls`) [@indahl2009canonical]
 - Envelope Estimation of predictor space (`env`) [@cook2010envelope, @helland1990partial]
-
-## Prediction Error
-
-The comparison is based on prediction error. The prediction error is computed as the trace of following quantity,
-
-$$\underset{m \times m}{\alpha} = \left(
-\hat{\beta} - \beta
-\right)^t \Sigma_{xx} \left(
-\hat{\beta} - \beta
-\right) + \sigma^2$$
-
-This gives an overall prediction performance for all responses.
 
 ## A Comparison
 
@@ -369,6 +347,13 @@ topBest <- avgPredErr %>%
 
 
 ```{r, out.width='100vw', fig.asp=0.6, fig.width=7, dev='svg'}
+design_lbl <- as_tibble(opts[c("gamma", "R2")]) %>% 
+  mutate(
+    design = 1:n(),
+    label = paste0("gamma:", gamma, "\nR2:", R2),
+    y = c(Inf, -Inf),
+    Method = "PLS"
+  )
 dta <- predErr %>% 
   rename(pred_err = without_norm,
          Method = Model) %>% 
@@ -377,8 +362,8 @@ dta <- predErr %>%
 dta_ols <- dta %>% filter(Method == "OLS", comp == 1) %>% 
   group_by(Method, design, comp) %>% 
   summarise(pred_err = mean(pred_err)) %>% 
-  ungroup() %>% 
-  select(-Method)
+  ungroup() %>%
+  rename(Model = Method)
 plt <- qplot(
   comp, pred_err, 
   group = replicate,
@@ -387,28 +372,30 @@ plt <- qplot(
   data = dta %>% filter(Method != "OLS"),
   size = I(1))
 plt <- plt + 
-  geom_hline(data = dta_ols, group = 1, linetype = 2,
-             color = "red", aes(yintercept = pred_err)) +
+  geom_hline(data = dta_ols, group = 1, linetype = "dashed",
+             aes(yintercept = pred_err, color = Model, linetype = Model)) +
   facet_grid(design ~ Method, labeller = label_both) +
   stat_summary(group = 1, fun.data = mean_se, geom = "ribbon", fill = "blue", alpha = 0.5, color = NA) +
   stat_summary(group = 1, fun.y = mean, color = "red", size = 0.5, geom = "line") +
   stat_summary(group = 1, fun.y = mean, color = "red", size = 0.5, geom = "point") +
   labs(x = "Number of components", y = "Average Prediction Error") +
   scale_x_continuous(breaks = seq(0, 10, 2))
-plt + geom_point(
+plt <- plt + geom_point(
   shape = 21, 
   data = avgPredErr %>% 
     filter(Model != "OLS") %>% 
     rename(Method = Model), 
   group = 1
-) + geom_text(
+) 
+plt <- plt + geom_text(
   family = "mono", 
   group = 1, aes(label = label),
   vjust = 2,
   data = avgPredErr %>% 
     filter(Model != "OLS") %>% 
     rename(Method = Model)
-) + geom_text(
+)
+plt <- plt + geom_text(
   x = Inf, y = Inf,
   label = "Winner",
   data = topBest %>% 
@@ -418,7 +405,80 @@ plt + geom_point(
   hjust = 1,
   color = "red"
 )
+plt <- plt + geom_text(
+  aes(label = label, y = y),
+  data = design_lbl,
+  group = 1,
+  x = 10, hjust = 1, 
+  vjust = c(1, 0),
+  inherit.aes = FALSE,
+  family = "mono",
+  size = rel(3),
+  color = "RoyalBlue"
+)
+plt <- plt + theme(
+  legend.position = c(0.19, 0.95),
+  legend.title = element_blank(),
+  legend.background = element_rect(fill = NA),
+  legend.key = element_rect(fill = NA)
+)
+plt
 ```
+
+Some Cases {data-background="#F6FAF5"}
+=============================================================================
+
+## {data-transition="slide-in none"}
+
+<div class="flex-container-col">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+Case I
+</div>
+<div class="flex-sidebar-content">
+
+- Testing new estimation Methods
+- Study its properties
+- Study its performance in data with various properties
+
+</div>
+</div>
+
+<div id="separator"></div>
+
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+Case II
+</div>
+
+<div class="flex-sidebar-content">
+
+- Educational use
+- Student can learn how a method such as variable selection removes irrelevant variables
+- Student can observe and study the loading weights on relevant and irrelevant principle components
+
+</div>
+  
+</div>
+</div>
+
+<div id="separator"></div>
+
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+Case III
+</div>
+<div class="flex-sidebar-content">
+
+- Comparing various methods (estimation methods, variable selection techniques)
+
+</div>
+  
+</div>
+</div>
+</div>
 
 # {data-background-image='images/ThankYou.jpg' data-background-size='80%' data-background-color=#fff data-background-size='100% 100%'}
 # References {data-background="#117d6b"}

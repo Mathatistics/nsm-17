@@ -173,12 +173,3 @@ body:after {
   padding-left:50px;
   text-align: left;
 }
-/* References
-#refs:before{
-  content: "\25CA";
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-}
-*/

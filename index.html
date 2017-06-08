@@ -85,9 +85,10 @@
     <div class="author">Raju Rimal</div>
 <div id="supervisor-title">Supervisors:</div>
     <div class="supervisors author"><small>Solve Sæbø</small></div>
-    <div class="supervisors author"><small>Tryge Almøy</small></div>
+    <div class="supervisors author"><small>and</small></div>
+    <div class="supervisors author"><small>Trygve Almøy</small></div>
 <div id="website"><code><a href="http://mathatistics.github.io/nsm-17" class="uri">http://mathatistics.github.io/nsm-17</a></code></div>
-    <h3 class="date">05 June, 2017</h3>
+    <h3 class="date">08 June, 2017</h3>
 </section>
 
 <section id="section" class="slide level2 center">
@@ -103,61 +104,15 @@ Man is a tool-using animal. Without tools he is nothing, with tools he is all.
 </div>
 </div>
 </section>
-<section><section id="some-cases" class="titleslide slide level1" data-background="#F6FAF5"><h1>Some Cases</h1></section><section id="section-1" class="slide level2" data-transition="slide-in none">
-<h2></h2>
-<div class="flex-container-col">
-<div class="flex-content flex-container">
-<div class="flex-content flex-title">
-<p>Case I</p>
-</div>
-<div class="flex-sidebar-content">
-<ul>
-<li>Testing new estimation Methods</li>
-<li>Study its properties</li>
-<li>Study its performance in data with various properties</li>
-</ul>
-</div>
-</div>
-<div id="separator">
-
-</div>
-<div class="flex-content fragment">
-<div class="flex-content flex-container">
-<div class="flex-content flex-title">
-<p>Case II</p>
-</div>
-<div class="flex-sidebar-content">
-<ul>
-<li>Educational use</li>
-<li>Student can learn how a method such as variable selection removes irrelevant variables</li>
-<li>Student can observe and study the loading weights on relevant and irrelevant principle components</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="separator">
-
-</div>
-<div class="flex-content fragment">
-<div class="flex-content flex-container">
-<div class="flex-content flex-title">
-<p>Case III</p>
-</div>
-<div class="flex-sidebar-content">
-<ul>
-<li>Comparing various methods (estimation methods, variable selection techniques)</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section><section id="simrel-m-a-versatile-tool-for-simulating-multi-response-linear-model-data" class="titleslide slide level1" data-background="#F6FAF5"><h1><code>simrel-m</code>: A versatile tool for simulating multi-response linear model data</h1></section><section id="simrel-m" class="slide level2">
-<h2><code>simrel-m</code></h2>
+<section><section id="simrel-m-a-versatile-tool-for-simulating-multi-response-linear-model-data" class="titleslide slide level1" data-background="#F6FAF5"><h1><code>simrel-m</code>: A versatile tool for simulating multi-response linear model data</h1></section><section id="why-simrel-m" class="slide level2">
+<h2>Why <code>simrel-m</code></h2>
+<div class="flex-container">
+<br/>
+<div class="flex-content" style="flex:4">
 <ul style="list-style:square;">
-<li class="fragment">
-By changing fewparameters, we can simulate wide range of linear model data. For example,
-<ol style="margin: 30px 30px" class="fragment">
+<li class="fragment" data-fragment-index="1">
+By changing few parameters, we can simulate wide range of linear model data. For example,
+<ol style="margin: 30px 30px" class="fragment" data-fragment-index="2">
 <li>
 Controlling degree of multicollinearity in the simulated data
 </li>
@@ -166,60 +121,87 @@ Specify which principle component are relevant for prediction
 </li>
 </ol>
 </li>
-<li class="fragment">
-Easy to use and has wide application
+<li class="fragment" data-fragment-index="3">
+It is easy to use and has wide application
 </li>
 </ul>
+</div>
+<div class="flex-content fragment" style="flex:3" data-fragment-index="2">
+<p><img src="gif-factory/multicollinearity.gif" width="100%" /></p>
+</div>
+</div>
 </section><section id="the-idea-behind" class="slide level2">
 <h2>The idea behind</h2>
-<div id="simrel-m" class="flex-container-col">
-<!-- First Box -->
-<div id="simrel-m-left" class="flex-content flex-container">
+<div class="flex-container">
 <div class="flex-content">
-<p><img src="images/reduction-model.svg" style="display: block; margin: auto;" /></p>
-</div>
-<div class="flex-content">
-<p><small><em>It is an extension of <code>simrel</code> <span class="citation" data-cites="saebo2015simrel">[1]</span> r-package for simulating <strong>multi-response data</strong></em></small></p>
+<div class="figure" style="text-align: center">
+<img src="gif-factory/reduction-model.gif" alt="Subspace space of X and Y acting on reduced regression model" width="100%" />
+<p class="caption">
+Subspace space of X and Y acting on reduced regression model
+</p>
 </div>
 </div>
 <div id="separator">
 
 </div>
 <!-- Second Box -->
-<div id="simrel-m-right" class="flex-content">
+<div class="flex-content">
 <ul>
 <li class="fragment">Based on idea of <strong>reduction of random regression model</strong></li>
 <li class="fragment">It separates <span class="math inline">\(X\)</span> into subspaces that is relevant and irrelevant for predicting each response</li>
 <li class="fragment">It re-parameterize the population model, <span class="math display">\[
-\mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}
-\text{, where }\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})
-\]</span></li>
-<li class="fragment">It can simulate diverse nature of data with very few parameters</li>
+\mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}\]</span> where <span class="math inline">\(\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})\)</span>,</li>
+<li class="fragment">changing few parameters can give wide range of properties in simulated data.</li>
 </ul>
 </div>
 </div>
 </section><section id="how-it-works" class="slide level2">
 <h2>How it works</h2>
-<div class="fragment">
-<br/>
-<div class="flex-container">
-<div class="flex-content">
-<p><img src="images/simrel-broad-flowchart.svg" /></p>
+<div class="flex-container-col">
+<div class="flex-content flex-container">
+<div class="flex-content fragment" data-fragment-index="1">
+<p><img src="index_files/figure-revealjs/unnamed-chunk-6-1.svg" width="100%" /></p>
 </div>
-<div id="how-it-works" class="flex-content">
+<div class="flex-content fragment" data-fragment-index="2">
+<p><img src="index_files/figure-revealjs/unnamed-chunk-7-1.svg" width="100%" /></p>
+</div>
+<div class="flex-content fragment" data-fragment-index="3">
+<p><img src="index_files/figure-revealjs/unnamed-chunk-8-1.svg" width="100%" /></p>
+</div>
+</div>
+<div class="flex-content flex-container">
+<div class="flex-content fragment" data-fragment-index="1">
 <ul>
-<li class="fragment">Collects input parameters from user</li>
-<li class="fragment">Makes a covariance matrix satisfying those input parameters</li>
-<li class="fragment">Computes true population properties such as regression coefficients</li>
-<li class="fragment">Samples calibration and validation sets that satisfy the properties of latent space</li>
-<li class="fragment">Rotates the latent variables to obtaine the response and predictors</li>
+<li>Get parameter setting from users</li>
+<li>Create Covariance matrix</li>
+</ul>
+</div>
+<div class="flex-content fragment" data-fragment-index="2">
+<ul>
+<li>Create Rotation Matrix</li>
+<li>Rotate the sampled Latent variables</li>
 </ul>
 </div>
 </div>
 </div>
+<!-- <br/> -->
+<!-- <div class = "flex-container"> -->
+<!-- <div class = "flex-content"> -->
+<!-- ```{r} -->
+<!-- knitr::include_graphics("images/simrel-broad-flowchart.svg") -->
+<!-- ``` -->
+<!-- </div> -->
+<!-- <div class = "flex-content" id = "how-it-works"> -->
+<!-- > - Collects input parameters from user -->
+<!-- > - Makes a covariance matrix satisfying those input parameters -->
+<!-- > - Computes true population properties such as regression coefficients -->
+<!-- > - Samples calibration and validation sets that satisfy the properties of latent space -->
+<!-- > - Rotates the latent variables to obtaine the response and predictors -->
+<!-- </div> -->
+<!-- </div> -->
 </section></section>
-<section><section id="demonstration" class="titleslide slide level1" data-background="#F6FAF5"><h1>Demonstration</h1></section><section id="simulatr-link" class="slide level2" data-background-image="images/simulatr-screenshot.png" data-background-size="cover">
-<h2><a href="https://therimalaya.shinyapps.io/AppSimulatr/"><code>simulatr</code> Application</a></h2>
+<section><section id="a-web-interface" class="titleslide slide level1" data-background="#F6FAF5"><h1>A web interface</h1></section><section id="section-1" class="slide level2" data-background-image="screenshots/screenshot.gif" data-background-size="auto 95%">
+<h2></h2>
 </section></section>
 <section><section id="an-example-of-comparison-of-estimation-methods" class="titleslide slide level1" data-background="#F6FAF5"><h1>An example of comparison of estimation methods</h1></section><section id="design-properties" class="slide level2">
 <h2>Design Properties</h2>
@@ -291,41 +273,78 @@ Easy to use and has wide application
 <ul>
 <li>Oridinary Least Squares (<code>ols</code>)</li>
 <li>Principle Component Regression (<code>pcr</code>)</li>
-<li>Partial Least Squares (<code>pls</code>) <span class="citation" data-cites="wold1985partial">[2]</span></li>
-<li>Cannonical Partial Least Squares (<code>cpls</code>) <span class="citation" data-cites="indahl2009canonical">[3]</span></li>
-<li>Envelope Estimation of predictor space (<code>env</code>) <span class="citation" data-cites="cook2010envelope">[4]</span></li>
+<li>Partial Least Squares (<code>pls</code>) <span class="citation" data-cites="wold1985partial">[1]</span></li>
+<li>Cannonical Partial Least Squares (<code>cpls</code>) <span class="citation" data-cites="indahl2009canonical">[2]</span></li>
+<li>Envelope Estimation of predictor space (<code>env</code>) <span class="citation" data-cites="cook2010envelope">[3]</span></li>
 </ul>
-</section><section id="prediction-error" class="slide level2">
-<h2>Prediction Error</h2>
-<p>The comparison is based on prediction error. The prediction error is computed as the trace of following quantity,</p>
-<p><span class="math display">\[\underset{m \times m}{\alpha} = \left(
-\hat{\beta} - \beta
-\right)^t \Sigma_{xx} \left(
-\hat{\beta} - \beta
-\right) + \sigma^2\]</span></p>
-<p>This gives an overall prediction performance for all responses.</p>
 </section><section id="a-comparison" class="slide level2">
 <h2>A Comparison</h2>
-<p><img src="index_files/figure-revealjs/unnamed-chunk-14-1.svg" width="100vw" /></p>
+<p><img src="index_files/figure-revealjs/unnamed-chunk-19-1.svg" width="100vw" /></p>
 </section></section>
-<section><section id="section-2" class="titleslide slide level1" data-background-image="images/ThankYou.jpg" data-background-size="80%" data-background-color="#fff" data-background-size="100% 100%"><h1></h1></section></section>
+<section><section id="some-cases" class="titleslide slide level1" data-background="#F6FAF5"><h1>Some Cases</h1></section><section id="section-2" class="slide level2" data-transition="slide-in none">
+<h2></h2>
+<div class="flex-container-col">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+<p>Case I</p>
+</div>
+<div class="flex-sidebar-content">
+<ul>
+<li>Testing new estimation Methods</li>
+<li>Study its properties</li>
+<li>Study its performance in data with various properties</li>
+</ul>
+</div>
+</div>
+<div id="separator">
+
+</div>
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+<p>Case II</p>
+</div>
+<div class="flex-sidebar-content">
+<ul>
+<li>Educational use</li>
+<li>Student can learn how a method such as variable selection removes irrelevant variables</li>
+<li>Student can observe and study the loading weights on relevant and irrelevant principle components</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="separator">
+
+</div>
+<div class="flex-content fragment">
+<div class="flex-content flex-container">
+<div class="flex-content flex-title">
+<p>Case III</p>
+</div>
+<div class="flex-sidebar-content">
+<ul>
+<li>Comparing various methods (estimation methods, variable selection techniques)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section><section id="section-3" class="titleslide slide level1" data-background-image="images/ThankYou.jpg" data-background-size="80%" data-background-color="#fff" data-background-size="100% 100%"><h1></h1></section></section>
 <section><section id="references" class="titleslide slide level1" data-background="#117d6b"><h1>References</h1></section><section id="references-1" class="slide level2 unnumbered">
 <h2>References</h2>
 <div id="refs" class="references">
-<div id="ref-saebo2015simrel">
-<p>[1] S. Sæbø, T. Almøy, I.S. Helland, Simrel—A versatile tool for linear model data simulation based on the concept of a relevant subspace and relevant predictors, Chemometrics and Intelligent Laboratory Systems 146 (2015) 128–35.</p>
-</div>
 <div id="ref-wold1985partial">
-<p>[2] H. Wold, Partial least squares, Encyclopedia of Statistical Sciences (1985).</p>
+<p>[1] H. Wold, Partial least squares, Encyclopedia of Statistical Sciences (1985).</p>
 </div>
 <div id="ref-indahl2009canonical">
-<p>[3] U.G. Indahl, K.H. Liland, T. Næs, Canonical partial least squaresa unified pls approach to classification and regression problems, Journal of Chemometrics 23(9) (2009) 495–504.</p>
+<p>[2] U.G. Indahl, K.H. Liland, T. Næs, Canonical partial least squaresa unified pls approach to classification and regression problems, Journal of Chemometrics 23(9) (2009) 495–504.</p>
 </div>
 <div id="ref-cook2010envelope">
-<p>[4] R.D. Cook, B. Li, F. Chiaromonte, Envelope models for parsimonious and efficient multivariate linear regression, Statistica Sinica (2010) 927–60.</p>
+<p>[3] R.D. Cook, B. Li, F. Chiaromonte, Envelope models for parsimonious and efficient multivariate linear regression, Statistica Sinica (2010) 927–60.</p>
 </div>
 <div id="ref-helland1990partial">
-<p>[5] I.S. Helland, Partial least squares regression and statistical models, Scandinavian Journal of Statistics (1990) 97–114.</p>
+<p>[4] I.S. Helland, Partial least squares regression and statistical models, Scandinavian Journal of Statistics (1990) 97–114.</p>
 </div>
 </div>
 </section></section>
@@ -345,7 +364,7 @@ Easy to use and has wide application
         // Push each slide change to the browser history
         history: true,
         // Vertical centering of slides
-        center: false,
+        center: true,
         // Turns fragments on and off globally
         fragments: true,
         // Opens links in an iframe preview overlay
