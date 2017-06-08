@@ -173,7 +173,36 @@ relpred_plot + thmPlus
 <!-- </div> -->
 
 # A web interface {data-background="#F6FAF5"}
-## {data-background-image='screenshots/screenshot.gif' data-background-size='auto 95%'}
+## {data-background-image='screenshots/001.png' data-background-size='100% 100%'}
+## {data-background-image='screenshots/002.png' data-background-size='100% 100%'}
+## {data-background-image='screenshots/003.png' data-background-size='100% 100%'}
+## {data-background-image='screenshots/004.png' data-background-size='100% 100%'}
+## {data-background-image='screenshots/005.png' data-background-size='100% 100%'}
+
+## How to get it
+<div class="flex-container">
+<div class="flex-content">
+Install simrel-m:
+```{r, echo = TRUE, eval = FALSE}
+devtools::install_github(
+  "therimalaya/simulatr",
+  quiet = TRUE
+)
+```
+</div>
+<div class="flex-content">
+Run the shiny app:
+```{r, echo = TRUE, eval = FALSE}
+shiny::runGitHub(
+  "AppSimulatr", 
+  "therimalaya"
+)
+```
+</div>
+</div>
+Documentation:
+
+[`https://therimalaya.github.io/simulatr/`](https://therimalaya.github.io/simulatr/)
 
 
 An example of comparison of estimation methods {data-background="#F6FAF5"}

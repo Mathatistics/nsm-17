@@ -166,10 +166,13 @@ body:after {
     height: auto;
 }
 
-
 #refs{
   font-size: 0.75em;
   position:relative;
   padding-left:50px;
   text-align: left;
+}
+
+pre, code{
+  background-color: transparent;
 }
