@@ -1,4 +1,4 @@
-index.html: index.Rmd
+index.html: index.Rmd template.html
 	Rscript -e 'rmarkdown::render("index.Rmd", rmarkdown::resolve_output_format("index.Rmd"))'
 
 clean: 

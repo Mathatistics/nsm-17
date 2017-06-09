@@ -1,5 +1,6 @@
 ---
-title: "Simulation Tool and its application"
+title: "simrel-m"
+subtitle: "A simulation tool and its application"
 author: "Raju Rimal"
 date: "`r format(Sys.Date(), '%d %B, %Y')`"
 output:

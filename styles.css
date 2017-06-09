@@ -7,6 +7,11 @@
   color: rgba(255, 255, 220, 0.8);
 }
 
+h2.subtitle {
+    margin-bottom: 8vh;
+    font-size: 1.2em;
+}
+
 /* Title-Slide Font Color */
 .reveal .titleslide.has-light-background h1 {
     color: #117d6b;
