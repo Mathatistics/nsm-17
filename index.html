@@ -125,7 +125,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
     <div class="supervisors author"><small>and</small></div>
     <div class="supervisors author"><small>Trygve Almøy</small></div>
 <div id="website"><code><a href="http://mathatistics.github.io/nsm-17" class="uri">http://mathatistics.github.io/nsm-17</a></code></div>
-    <h3 class="date">08 June, 2017</h3>
+    <h3 class="date">09 June, 2017</h3>
 </section>
 
 <section id="section" class="slide level2 center">
@@ -154,7 +154,7 @@ By changing few parameters, we can simulate wide range of linear model data. For
 Controlling degree of multicollinearity in the simulated data
 </li>
 <li>
-Specify which principle component are relevant for prediction
+Specifying the relevant principle components for prediction
 </li>
 </ol>
 </li>
@@ -184,11 +184,11 @@ Subspace space of X and Y acting on reduced regression model
 <!-- Second Box -->
 <div class="flex-content">
 <ul>
-<li class="fragment">Based on idea of <strong>reduction of random regression model</strong></li>
-<li class="fragment">It separates <span class="math inline">\(X\)</span> into subspaces that is relevant and irrelevant for predicting each response</li>
-<li class="fragment">It re-parameterize the population model, <span class="math display">\[
+<li class="fragment">It is Based on idea of <strong>reduction of random regression model</strong></li>
+<li class="fragment">It separates <span class="math inline">\(X\)</span> into subspaces that are relevant and irrelevant for predicting each response</li>
+<li class="fragment">It re-parameterizes the population model, <span class="math display">\[
 \mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}\]</span> where <span class="math inline">\(\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})\)</span>,</li>
-<li class="fragment">changing few parameters can give wide range of properties in simulated data.</li>
+<li class="fragment">Changing few parameters can give wide range of properties in simulated data.</li>
 </ul>
 </div>
 </div>
@@ -209,14 +209,14 @@ Subspace space of X and Y acting on reduced regression model
 <div class="flex-content flex-container">
 <div class="flex-content fragment" data-fragment-index="1">
 <ul>
-<li>Get parameter setting from users</li>
-<li>Create Covariance matrix</li>
+<li>Gets parameter setting from users</li>
+<li>Creates Covariance matrix</li>
 </ul>
 </div>
 <div class="flex-content fragment" data-fragment-index="2">
 <ul>
-<li>Create Rotation Matrix</li>
-<li>Rotate the sampled Latent variables</li>
+<li>Creates Rotation Matrix</li>
+<li>Rotates the sampled Latent variables</li>
 </ul>
 </div>
 </div>
@@ -334,12 +334,12 @@ Subspace space of X and Y acting on reduced regression model
 </div>
 </section><section id="estimation-methods" class="slide level2">
 <h2>Estimation Methods</h2>
-<p>For Comparison, lets considered following estimation methods,</p>
+<p>For comparison, let’s consider the following estimation methods,</p>
 <ul>
-<li>Oridinary Least Squares (<code>ols</code>)</li>
+<li>Ordinary Least Squares (<code>ols</code>)</li>
 <li>Principle Component Regression (<code>pcr</code>)</li>
 <li>Partial Least Squares (<code>pls</code>) <span class="citation" data-cites="wold1985partial">[1]</span></li>
-<li>Cannonical Partial Least Squares (<code>cpls</code>) <span class="citation" data-cites="indahl2009canonical">[2]</span></li>
+<li>Canonical Partial Least Squares (<code>cpls</code>) <span class="citation" data-cites="indahl2009canonical">[2]</span></li>
 <li>Envelope Estimation of predictor space (<code>env</code>) <span class="citation" data-cites="cook2010envelope">[3]</span></li>
 </ul>
 </section><section id="a-comparison" class="slide level2">
@@ -356,8 +356,8 @@ Subspace space of X and Y acting on reduced regression model
 <div class="flex-sidebar-content">
 <ul>
 <li>Testing new estimation Methods</li>
-<li>Study its properties</li>
-<li>Study its performance in data with various properties</li>
+<li>Studying its properties</li>
+<li>Studying its performance in data with various properties</li>
 </ul>
 </div>
 </div>
@@ -372,8 +372,8 @@ Subspace space of X and Y acting on reduced regression model
 <div class="flex-sidebar-content">
 <ul>
 <li>Educational use</li>
-<li>Student can learn how a method such as variable selection removes irrelevant variables</li>
-<li>Student can observe and study the loading weights on relevant and irrelevant principle components</li>
+<li>Students can learn how a method such as variable selection removes irrelevant variables</li>
+<li>Students can observe and study the loading weights on relevant and irrelevant principle components</li>
 </ul>
 </div>
 </div>
