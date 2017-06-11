@@ -69,39 +69,36 @@ for (pkg in pkgs) require(pkg, quietly = T, warn.conflicts = F, character.only =
 </div>
 <div class="flex-content fragment" style="flex:3" data-fragment-index="2">
 ```{r, out.width='100%', fig.width=5, fig.asp=1}
-knitr::include_graphics("gif-factory/multicollinearity.gif")
+knitr::include_graphics("images/gif-factory/multicollinearity.gif")
 ```
 </div>
 </div>
-
 
 ## The idea behind
-
-<div class="flex-container">
-
+<div class="flex-container-col" style="justify-content:flex-start;">
+<div class="flex-container" style="flex:1;">
 <div class="flex-content">
-
-```{r, fig.align='center', out.width = "100%", fig.cap="Subspace space of X and Y acting on reduced regression model"}
-knitr::include_graphics("gif-factory/reduction-model.gif")
-```
+<img src="images/reduction-model/001.png" alt="reduction-model-01" class = "fragment current-visible" data-fragment-index="1"/>
+<img src="images/reduction-model/003.png" alt="reduction-model-02" class = "fragment current-visible" data-fragment-index="2"/>
+<img src="images/reduction-model/004.png" alt="reduction-model-03" class = "fragment current-visible" data-fragment-index="3"/>
+<img src="images/reduction-model/005.png" alt="reduction-model-03" class = "fragment current-visible" data-fragment-index="4"/>
+<img src="images/reduction-model/006.png" alt="reduction-model-03" class = "fragment" data-fragment-index="5"/>
 </div>
-
-<div id = "separator"></div>
-
-<!-- Second Box -->
 <div class="flex-content">
-> - It is Based on idea of **reduction of random regression model** 
-- It separates $X$ into subspaces that are relevant and irrelevant for predicting each response
-- It re-parameterizes the population model,
-  $$
-  \mathbf{Y} = \boldsymbol{\mu}_{Y} + \mathbf{B}^t\left(\mathbf{X} - \boldsymbol{\mu}_X\right) + \boldsymbol{\epsilon}$$
-  where $\boldsymbol{\epsilon} \sim N(0, \boldsymbol{\Sigma}_{Y|X})$, 
-- Changing few parameters can give wide range of properties in simulated data.
+<li class="fragment" data-fragment-index="1">Based on `simrel`[@saebo2015simrel] package</li>
+<li class="fragment" data-fragment-index="1">Predictor Space (Blue Box) </li>
+<li class="fragment" data-fragment-index="2">A model defines its relationship with Response Space (Green Box) </li>
+<li class="fragment" data-fragment-index="3">Subspace within these spaces (a reduced regression model) contains information for this relationship </li>
 </div>
-  
+</div>
+<div class="flex-content fragment" style="flex:1;" data-fragment-index="1">
+<li class="fragment" data-fragment-index="5"> Set of orthogonal variables $(Z)$ span the relevant predictor subspace (predictor components) </li>
+<li class="fragment"> Set of orthogonal variables $(W)$ span the response subspace (response components) </li>
+<li class="fragment"> Implement this idea to construct the relevant covariance matrix and make simulation with it </li>
+</div>
 </div>
 
-## How it works 
+## How it works {data-transition="slide-in none"}
 
 ```{r}
 sim_obj <- simulatr::simulatr(
@@ -115,9 +112,12 @@ source("plot-functions.R")
 ```
 
 ```{r, out.width='100%', fig.asp=0.35, results='hide', fig.width=12}
-relpred_plot <- plot(cov.df(sim_obj, type = "relpred", ordering = T), type = "relpred")
-rotation_plot <- plot(cov.df(sim_obj, type = "rotation", ordering = T), type = "rotation")
-relpos_plot <- plot(cov.df(sim_obj, type = "relpos", ordering = T), type = "relpos")
+relpred_plot_o <- plot(cov.df(sim_obj, type = "relpred", ordering = T), type = "relpred")
+relpred_plot <- plot(cov.df(sim_obj, type = "relpred", ordering = F), type = "relpred")
+rotation_plot_o <- plot(cov.df(sim_obj, type = "rotation", ordering = T), type = "rotation")
+rotation_plot <- plot(cov.df(sim_obj, type = "rotation", ordering = F), type = "rotation")
+relpos_plot_o <- plot(cov.df(sim_obj, type = "relpos", ordering = T), type = "relpos")
+relpos_plot <- plot(cov.df(sim_obj, type = "relpos", ordering = F), type = "relpos")
 thmPlus <- theme(text = element_text(size = 18))
 ```
 
@@ -151,36 +151,47 @@ relpred_plot + thmPlus
 </div>
 </div>
 
+## How it works {data-transition="none slide-out"}
 
-<!-- <br/> -->
-<!-- <div class = "flex-container"> -->
-<!-- <div class = "flex-content"> -->
-
-<!-- ```{r} -->
-<!-- knitr::include_graphics("images/simrel-broad-flowchart.svg") -->
-<!-- ``` -->
-
-<!-- </div> -->
-
-<!-- <div class = "flex-content" id = "how-it-works"> -->
-
-<!-- > - Collects input parameters from user -->
-<!-- > - Makes a covariance matrix satisfying those input parameters -->
-<!-- > - Computes true population properties such as regression coefficients -->
-<!-- > - Samples calibration and validation sets that satisfy the properties of latent space -->
-<!-- > - Rotates the latent variables to obtaine the response and predictors -->
-
-<!-- </div> -->
-<!-- </div> -->
+<div class="flex-container-col">
+<div class="flex-content flex-container">
+<div class="flex-content">
+```{r, fig.asp=1.1, out.width='100%', fig.width=5, dev.args = list(bg="transparent")}
+relpos_plot_o + thmPlus
+```  
+</div>
+<div class="flex-content">
+```{r, fig.asp=1.1, out.width='100%', fig.width=5, dev.args = list(bg="transparent")}
+rotation_plot_o + thmPlus
+```  
+</div>
+<div class="flex-content">
+```{r, fig.asp=1.1, out.width='100%', fig.width=5, dev.args = list(bg="transparent")}
+relpred_plot_o + thmPlus
+```  
+</div>
+</div>
+<div class="flex-content flex-container">
+<div class="flex-content">
+- Gets parameter setting from users
+- Creates Covariance matrix
+</div>
+<div class="flex-content">
+- Creates Rotation Matrix
+- Rotates the sampled Latent variables
+</div>
+</div>
+</div>
 
 # A web interface {data-background="#F6FAF5"}
-## {data-background-image='screenshots/001.png' data-background-size='100% 100%'}
-## {data-background-image='screenshots/002.png' data-background-size='100% 100%'}
-## {data-background-image='screenshots/003.png' data-background-size='100% 100%'}
-## {data-background-image='screenshots/004.png' data-background-size='100% 100%'}
-## {data-background-image='screenshots/005.png' data-background-size='100% 100%'}
+## {data-background-image='images/screenshots/001.png' data-background-size='100% 100%' data-transition="slide-in none-out"}
+## {data-background-image='images/screenshots/002.png' data-background-size='100% 100%' data-transition="none-in"}
+## {data-background-image='images/screenshots/003.png' data-background-size='100% 100%' data-transition="none-in"}
+## {data-background-image='images/screenshots/004.png' data-background-size='100% 100%' data-transition="none-in"}
+## {data-background-image='images/screenshots/005.png' data-background-size='100% 100%' data-transition="none-in slide-out"}
 
-## How to get it
+# How to get it {data-background="#F6FAF5"}
+##
 <div class="flex-container">
 <div class="flex-content">
 Install simrel-m:
