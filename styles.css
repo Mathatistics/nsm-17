@@ -81,16 +81,30 @@ h3.date {
 
 /* NMBU Logo at bottom right corner */
 body:after {
-  background-image: url(../images/logo-nmbu-white-square.png);
-  background-size: 100px 80px;
+  background-image: url(images/logo-nmbu-white-square.png);
+  background-size: 100% 85%;
   background-repeat: no-repeat;
   position: fixed;
   width: 110px;
   height: 100px;
-  z-index: 30;
-  right: 120px;
-  bottom: 8px;
+  z-index: 0;
+  right: 10%;
+  bottom: 3%;
   content:"";
+}
+@media screen and (max-width: 800px){
+  body:after {
+  background-image: url(images/logo-nmbu-white-square.png);
+  background-size: 60% 50%;
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 110px;
+  height: 100px;
+  z-index: 0;
+  right: 5%;
+  bottom: 2%;
+  content:"";
+}
 }
 
 /* Flex Box Model */
